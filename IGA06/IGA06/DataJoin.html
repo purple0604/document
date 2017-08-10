@@ -158,11 +158,11 @@
                 } else {
                     tName = source.Name + '.' + source.TableName;
                 }
-
+                
                 //若存在於JSON內，則顯示JSON已紀錄的資訊
                 if (ShowColumnsCache.length > 0) {
                     for (var k = 0; k < ShowColumnsCache.length; k++) {
-                        if ((ShowColumnsCache[k].SRCStep == source.Columns[i].CStep) && (ShowColumnsCache[k].ColumnSeq == source.Columns[i].ColumnSeq)) {
+                        if ((ShowColumnsCache[k].CStep == source.Columns[i].CStep) && (ShowColumnsCache[k].ColumnSeq == source.Columns[i].ColumnSeq)) {
                             isChecked = ShowColumnsCache[k].IsShow == "Y" ? "checked" : "";
                         }
                         if (isChecked == "checked") {

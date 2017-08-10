@@ -207,7 +207,7 @@ namespace IGA06
                                 //取得於定義來源欄位檔內，相同定義編號且同名稱的欄位序號，並更新自訂欄位名稱及是否顯示為結果等欄位
                                 foreach (var uItem in udcList)
                                 {
-                                    if ((uItem.SEARCH_NO == ums.SEARCH_NO) && (uItem.STEP_ID.ToString() == sColumn["SRCStep"].ToString()) && (uItem.COLUMN_SEQ == (int)sColumn["ColumnSeq"]))
+                                    if ((uItem.SEARCH_NO == ums.SEARCH_NO) && (uItem.STEP_ID.ToString() == sColumn["CStep"].ToString()) && (uItem.COLUMN_SEQ == (int)sColumn["ColumnSeq"]))
                                     {
                                         uItem.COLUMN_SHOW_NAME = sColumn["CName"].ToString();
                                         uItem.IS_SHOW_FG = sColumn["IsShow"].ToString();
