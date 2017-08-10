@@ -43,9 +43,9 @@ namespace IGA06
 
                 var cond_ID = 0;//條件序號流水號
                 var joinStep_ID = 0;//關聯組合序號流水號
-                var joinColSeq = 0;//關聯輸出欄位序號流水號
+                //var joinColSeq = 0;//關聯輸出欄位序號流水號
                 var aggreStep_ID = 0;//聚合組合序號流水號
-                var aggreColSeq = 0;//聚合輸出欄位序號流水號
+                //var aggreColSeq = 0;//聚合輸出欄位序號流水號
                 var outputSeq_ID = 0;//輸出檔.欄位序號流水號
 
                 #region Json To Object
@@ -63,10 +63,10 @@ namespace IGA06
                 List<UDA_D_CONDITION> udcnList = new List<UDA_D_CONDITION>();
                 List<UDA_D_JOIN> udjList = new List<UDA_D_JOIN>();
                 List<UDA_D_JOINCOLUMN> udjcList = new List<UDA_D_JOINCOLUMN>();
-                List<UDA_D_JOINOUTPUT> udjoList = new List<UDA_D_JOINOUTPUT>();
+                //List<UDA_D_JOINOUTPUT> udjoList = new List<UDA_D_JOINOUTPUT>();
                 List<UDA_D_AGGRATION> udaList = new List<UDA_D_AGGRATION>();
                 List<UDA_D_AGGRECOLUMN> udacList = new List<UDA_D_AGGRECOLUMN>();
-                List<UDA_D_AGGRATIONOUTPUT> udaoList = new List<UDA_D_AGGRATIONOUTPUT>();
+                //List<UDA_D_AGGRATIONOUTPUT> udaoList = new List<UDA_D_AGGRATIONOUTPUT>();
                 List<UDA_D_OUTPUT> udoList = new List<UDA_D_OUTPUT>();
                 List<UDA_D_OUTCOLUMN> udocList = new List<UDA_D_OUTCOLUMN>();
 
@@ -177,44 +177,44 @@ namespace IGA06
                                 udjcList.Add(udjc);
                             }
 
-                            foreach (Dictionary<string, object> sColumn in (object[])item["ShowColumns"])
-                            {
-                                UDA_D_JOINOUTPUT udjo = new UDA_D_JOINOUTPUT();
-
-                                foreach (string  col in sColumn.Keys)
-                                {
-                                    PropertyInfo cpi = udjo.GetType().GetProperties()
-                                    .Where(prop => prop.GetCustomAttributes(typeof(NameMappingAttribute), false).Cast<NameMappingAttribute>().Where(attr => attr.JsonName == col).Count() > 0).DefaultIfEmpty(null).First();
-
-                                    if (cpi != null)
-                                    {
-                                        cpi.SetValue(udjo, ConvertType(cpi, sColumn[col]), null);
-                                    }
-                                }
-
-                                udjo.SEARCH_NO = ums.SEARCH_NO;
-                                udjo.STEP_ID = udj.STEP_ID;
-                                udjo.COLUMN_SEQ = ++joinColSeq;
-                                udjo.COLUMN_ALIAS_NAME = string.Format("{0}_{1}", udjo.STEP_ID, udjo.COLUMN_ALIAS_NAME);
-                                udjo.USER_ID = ums.USER_ID;
-                                udjo.UPDATE_TIME = ums.UPDATE_TIME;
-
-                                udjoList.Add(udjo);
-                            }
-
                             //foreach (Dictionary<string, object> sColumn in (object[])item["ShowColumns"])
                             //{
-                            //    //取得於定義來源欄位檔內，相同定義編號且同名稱的欄位序號，並更新自訂欄位名稱及是否顯示為結果等欄位
-                            //    foreach (var uItem in udcList)
+                            //    UDA_D_JOINOUTPUT udjo = new UDA_D_JOINOUTPUT();
+
+                            //    foreach (string  col in sColumn.Keys)
                             //    {
-                            //        if ((uItem.SEARCH_NO == ums.SEARCH_NO) && (uItem.STEP_ID.ToString() == sColumn["SRCStep"].ToString()) && (uItem.COLUMN_SEQ == (int)sColumn["ColumnSeq"]))
+                            //        PropertyInfo cpi = udjo.GetType().GetProperties()
+                            //        .Where(prop => prop.GetCustomAttributes(typeof(NameMappingAttribute), false).Cast<NameMappingAttribute>().Where(attr => attr.JsonName == col).Count() > 0).DefaultIfEmpty(null).First();
+
+                            //        if (cpi != null)
                             //        {
-                            //            uItem.COLUMN_SHOW_NAME = sColumn["CName"].ToString();
-                            //            uItem.IS_SHOW_FG = sColumn["IsShow"].ToString();
-                            //            break;
+                            //            cpi.SetValue(udjo, ConvertType(cpi, sColumn[col]), null);
                             //        }
                             //    }
+
+                            //    udjo.SEARCH_NO = ums.SEARCH_NO;
+                            //    udjo.STEP_ID = udj.STEP_ID;
+                            //    udjo.COLUMN_SEQ = ++joinColSeq;
+                            //    udjo.COLUMN_ALIAS_NAME = string.Format("{0}_{1}", udjo.STEP_ID, udjo.COLUMN_ALIAS_NAME);
+                            //    udjo.USER_ID = ums.USER_ID;
+                            //    udjo.UPDATE_TIME = ums.UPDATE_TIME;
+
+                            //    udjoList.Add(udjo);
                             //}
+
+                            foreach (Dictionary<string, object> sColumn in (object[])item["ShowColumns"])
+                            {
+                                //取得於定義來源欄位檔內，相同定義編號且同名稱的欄位序號，並更新自訂欄位名稱及是否顯示為結果等欄位
+                                foreach (var uItem in udcList)
+                                {
+                                    if ((uItem.SEARCH_NO == ums.SEARCH_NO) && (uItem.STEP_ID.ToString() == sColumn["SRCStep"].ToString()) && (uItem.COLUMN_SEQ == (int)sColumn["ColumnSeq"]))
+                                    {
+                                        uItem.COLUMN_SHOW_NAME = sColumn["CName"].ToString();
+                                        uItem.IS_SHOW_FG = sColumn["IsShow"].ToString();
+                                        break;
+                                    }
+                                }
+                            }
 
                             break;
                         #endregion DataJoin
@@ -226,7 +226,7 @@ namespace IGA06
                         case "CustMax":
                         case "CustMin":
                         case "CustCount":
-                            var aggCode = string.Empty;
+                            //var aggCode = string.Empty;
 
                             UDA_D_AGGRATION uda = new UDA_D_AGGRATION();
 
@@ -264,37 +264,37 @@ namespace IGA06
                                 udac.USER_ID = ums.USER_ID;
                                 udac.UPDATE_TIME = ums.UPDATE_TIME;
 
-                                if (item["StepFeatures"].ToString() != "Customize")
-                                {
-                                    aggCode = udac.AGGREGATION_CODE;
-                                }
+                                //if (item["StepFeatures"].ToString() != "Customize")
+                                //{
+                                //    aggCode = udac.AGGREGATION_CODE;
+                                //}
                                 udacList.Add(udac);
                             }
 
-                            foreach (Dictionary<string, object> aColumn in (object[])item["AllColumns"])
-                            {
-                                UDA_D_AGGRATIONOUTPUT udao = new UDA_D_AGGRATIONOUTPUT();
+                            //foreach (Dictionary<string, object> aColumn in (object[])item["AllColumns"])
+                            //{
+                            //    UDA_D_AGGRATIONOUTPUT udao = new UDA_D_AGGRATIONOUTPUT();
 
-                                foreach (string col in aColumn.Keys)
-                                {
-                                    PropertyInfo cpi = udao.GetType().GetProperties()
-                                    .Where(prop => prop.GetCustomAttributes(typeof(NameMappingAttribute), false).Cast<NameMappingAttribute>().Where(attr => attr.JsonName == col).Count() > 0).DefaultIfEmpty(null).First();
+                            //    foreach (string col in aColumn.Keys)
+                            //    {
+                            //        PropertyInfo cpi = udao.GetType().GetProperties()
+                            //        .Where(prop => prop.GetCustomAttributes(typeof(NameMappingAttribute), false).Cast<NameMappingAttribute>().Where(attr => attr.JsonName == col).Count() > 0).DefaultIfEmpty(null).First();
 
-                                    if (cpi != null)
-                                    {
-                                        cpi.SetValue(udao, ConvertType(cpi, aColumn[col]), null);
-                                    }
-                                }
-                                udao.SEARCH_NO = ums.SEARCH_NO;
-                                udao.STEP_ID = uda.STEP_ID;
-                                udao.COLUMN_SEQ = ++aggreColSeq;
-                                udao.AGGREGATION_CODE = aggCode;
-                                udao.COLUMN_ALIAS_NAME = string.Format("{0}_{1}", udao.STEP_ID, udao.COLUMN_ALIAS_NAME);
-                                udao.USER_ID = ums.USER_ID;
-                                udao.UPDATE_TIME = ums.UPDATE_TIME;
+                            //        if (cpi != null)
+                            //        {
+                            //            cpi.SetValue(udao, ConvertType(cpi, aColumn[col]), null);
+                            //        }
+                            //    }
+                            //    udao.SEARCH_NO = ums.SEARCH_NO;
+                            //    udao.STEP_ID = uda.STEP_ID;
+                            //    udao.COLUMN_SEQ = ++aggreColSeq;
+                            //    udao.AGGREGATION_CODE = aggCode;
+                            //    udao.COLUMN_ALIAS_NAME = string.Format("{0}_{1}", udao.STEP_ID, udao.COLUMN_ALIAS_NAME);
+                            //    udao.USER_ID = ums.USER_ID;
+                            //    udao.UPDATE_TIME = ums.UPDATE_TIME;
 
-                                udaoList.Add(udao);
-                            }
+                            //    udaoList.Add(udao);
+                            //}
                             break;
                         #endregion 自訂聚合、一般聚合
 
@@ -359,10 +359,10 @@ namespace IGA06
                     new SelectCommand(string.Format("SELECT * FROM UDA_D_CONDITION WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_CONDITION", m_connectionStringKey),
                     new SelectCommand(string.Format("SELECT * FROM UDA_D_JOIN WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_JOIN", m_connectionStringKey),
                     new SelectCommand(string.Format("SELECT * FROM UDA_D_JOINCOLUMN WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_JOINCOLUMN", m_connectionStringKey),
-                    new SelectCommand(string.Format("SELECT * FROM UDA_D_JOINOUTPUT WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_JOINOUTPUT", m_connectionStringKey),
+                    //new SelectCommand(string.Format("SELECT * FROM UDA_D_JOINOUTPUT WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_JOINOUTPUT", m_connectionStringKey),
                     new SelectCommand(string.Format("SELECT * FROM UDA_D_AGGRATION WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_AGGRATION", m_connectionStringKey),
                     new SelectCommand(string.Format("SELECT * FROM UDA_D_AGGRECOLUMN WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_AGGRECOLUMN", m_connectionStringKey),
-                    new SelectCommand(string.Format("SELECT * FROM UDA_D_AGGRATIONOUTPUT WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_AGGRATIONOUTPUT", m_connectionStringKey),
+                    //new SelectCommand(string.Format("SELECT * FROM UDA_D_AGGRATIONOUTPUT WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_AGGRATIONOUTPUT", m_connectionStringKey),
                     new SelectCommand(string.Format("SELECT * FROM UDA_D_OUTPUT WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_OUTPUT", m_connectionStringKey),
                     new SelectCommand(string.Format("SELECT * FROM UDA_D_OUTCOLUMN WHERE SEARCH_NO = {0}", ums.SEARCH_NO), "UDA_D_OUTCOLUMN", m_connectionStringKey)
                 };
@@ -485,24 +485,24 @@ namespace IGA06
                 }
 
                 //定義關聯輸出欄位檔
-                foreach (var item in udjoList)
-                {
-                    DataRow udjoDr = ds.Tables["UDA_D_JOINOUTPUT"].NewRow();
-                    udjoDr.BeginEdit();
-                    udjoDr["SEARCH_NO"] = item.SEARCH_NO;
-                    udjoDr["STEP_ID"] = item.STEP_ID;
-                    udjoDr["COLUMN_SEQ"] = item.COLUMN_SEQ;
-                    udjoDr["SRC_STEP_ID"] = item.SRC_STEP_ID;
-                    udjoDr["SRC_COLUMN_SEQ"] = item.SRC_COLUMN_SEQ;
-                    udjoDr["COLUMN_SHOW_NAME"] = item.COLUMN_SHOW_NAME;
-                    udjoDr["COLUMN_ALIAS_NAME"] = item.COLUMN_ALIAS_NAME;
-                    udjoDr["COLUMNTYPE_CODE"] = item.COLUMNTYPE_CODE;
-                    udjoDr["IS_SELECT_FG"] = item.IS_SELECT_FG;
-                    udjoDr["USER_ID"] = item.USER_ID;
-                    udjoDr["UPDATE_TIME"] = item.UPDATE_TIME;
-                    udjoDr.EndEdit();
-                    ds.Tables["UDA_D_JOINOUTPUT"].Rows.Add(udjoDr);
-                }
+                //foreach (var item in udjoList)
+                //{
+                //    DataRow udjoDr = ds.Tables["UDA_D_JOINOUTPUT"].NewRow();
+                //    udjoDr.BeginEdit();
+                //    udjoDr["SEARCH_NO"] = item.SEARCH_NO;
+                //    udjoDr["STEP_ID"] = item.STEP_ID;
+                //    udjoDr["COLUMN_SEQ"] = item.COLUMN_SEQ;
+                //    udjoDr["SRC_STEP_ID"] = item.SRC_STEP_ID;
+                //    udjoDr["SRC_COLUMN_SEQ"] = item.SRC_COLUMN_SEQ;
+                //    udjoDr["COLUMN_SHOW_NAME"] = item.COLUMN_SHOW_NAME;
+                //    udjoDr["COLUMN_ALIAS_NAME"] = item.COLUMN_ALIAS_NAME;
+                //    udjoDr["COLUMNTYPE_CODE"] = item.COLUMNTYPE_CODE;
+                //    udjoDr["IS_SELECT_FG"] = item.IS_SELECT_FG;
+                //    udjoDr["USER_ID"] = item.USER_ID;
+                //    udjoDr["UPDATE_TIME"] = item.UPDATE_TIME;
+                //    udjoDr.EndEdit();
+                //    ds.Tables["UDA_D_JOINOUTPUT"].Rows.Add(udjoDr);
+                //}
 
                 //定義聚合檔
                 foreach (var item in udaList)
@@ -535,25 +535,25 @@ namespace IGA06
                 }
 
                 //定義聚合輸出欄位檔
-                foreach (var item in udaoList)
-                {
-                    DataRow udaoDr = ds.Tables["UDA_D_AGGRATIONOUTPUT"].NewRow();
-                    udaoDr.BeginEdit();
-                    udaoDr["SEARCH_NO"] = item.SEARCH_NO;
-                    udaoDr["STEP_ID"] = item.STEP_ID;
-                    udaoDr["COLUMN_SEQ"] = item.COLUMN_SEQ;
-                    udaoDr["SRC_STEP_ID"] = item.SRC_STEP_ID;
-                    udaoDr["SRC_COLUMN_SEQ"] = item.SRC_COLUMN_SEQ;
-                    udaoDr["AGGREGATION_CODE"] = item.AGGREGATION_CODE;
-                    udaoDr["COLUMN_SHOW_NAME"] = item.COLUMN_SHOW_NAME;
-                    udaoDr["COLUMN_ALIAS_NAME"] = item.COLUMN_ALIAS_NAME;
-                    udaoDr["COLUMNTYPE_CODE"] = item.COLUMNTYPE_CODE;
-                    udaoDr["IS_SELECT_FG"] = item.IS_SELECT_FG;
-                    udaoDr["USER_ID"] = item.USER_ID;
-                    udaoDr["UPDATE_TIME"] = item.UPDATE_TIME;
-                    udaoDr.EndEdit();
-                    ds.Tables["UDA_D_AGGRATIONOUTPUT"].Rows.Add(udaoDr);
-                }
+                //foreach (var item in udaoList)
+                //{
+                //    DataRow udaoDr = ds.Tables["UDA_D_AGGRATIONOUTPUT"].NewRow();
+                //    udaoDr.BeginEdit();
+                //    udaoDr["SEARCH_NO"] = item.SEARCH_NO;
+                //    udaoDr["STEP_ID"] = item.STEP_ID;
+                //    udaoDr["COLUMN_SEQ"] = item.COLUMN_SEQ;
+                //    udaoDr["SRC_STEP_ID"] = item.SRC_STEP_ID;
+                //    udaoDr["SRC_COLUMN_SEQ"] = item.SRC_COLUMN_SEQ;
+                //    udaoDr["AGGREGATION_CODE"] = item.AGGREGATION_CODE;
+                //    udaoDr["COLUMN_SHOW_NAME"] = item.COLUMN_SHOW_NAME;
+                //    udaoDr["COLUMN_ALIAS_NAME"] = item.COLUMN_ALIAS_NAME;
+                //    udaoDr["COLUMNTYPE_CODE"] = item.COLUMNTYPE_CODE;
+                //    udaoDr["IS_SELECT_FG"] = item.IS_SELECT_FG;
+                //    udaoDr["USER_ID"] = item.USER_ID;
+                //    udaoDr["UPDATE_TIME"] = item.UPDATE_TIME;
+                //    udaoDr.EndEdit();
+                //    ds.Tables["UDA_D_AGGRATIONOUTPUT"].Rows.Add(udaoDr);
+                //}
 
                 //定義輸出檔
                 foreach (var item in udoList)
@@ -598,10 +598,10 @@ namespace IGA06
                     new TableParam("UDA_D_CONDITION", "UDA_D_CONDITION", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "COLUMN_SEQ", "CONDTITION_ID"}),
                     new TableParam("UDA_D_JOIN", "UDA_D_JOIN", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID"}),
                     new TableParam("UDA_D_JOINCOLUMN", "UDA_D_JOINCOLUMN", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "JOIN_SET_ID"}),
-                    new TableParam("UDA_D_JOINOUTPUT", "UDA_D_JOINOUTPUT", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "COLUMN_SEQ"}),
+                    //new TableParam("UDA_D_JOINOUTPUT", "UDA_D_JOINOUTPUT", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "COLUMN_SEQ"}),
                     new TableParam("UDA_D_AGGRATION", "UDA_D_AGGRATION", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID"}),
                     new TableParam("UDA_D_AGGRECOLUMN", "UDA_D_AGGRECOLUMN", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "AGGRE_SET_ID"}),
-                    new TableParam("UDA_D_AGGRATIONOUTPUT", "UDA_D_AGGRATIONOUTPUT", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "COLUMN_SEQ"}),
+                    //new TableParam("UDA_D_AGGRATIONOUTPUT", "UDA_D_AGGRATIONOUTPUT", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "COLUMN_SEQ"}),
                     new TableParam("UDA_D_OUTPUT", "UDA_D_OUTPUT", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID"}),
                     new TableParam("UDA_D_OUTCOLUMN", "UDA_D_OUTCOLUMN", DataConcurrencyMode.None, null, null, new string[]{"SEARCH_NO", "STEP_ID", "COLUMN_SEQ"})
                 };
@@ -753,26 +753,26 @@ namespace IGA06
         /// <summary>
         /// 定義關聯輸出欄位檔
         /// </summary>
-        class UDA_D_JOINOUTPUT
-        {
-            public int SEARCH_NO { get; set; }
-            public int STEP_ID { get; set; }
-            public int COLUMN_SEQ { get; set; }
-            [NameMapping("SRCStep")]
-            public int SRC_STEP_ID { get; set; }
-            [NameMapping("ColumnSeq")]
-            public int SRC_COLUMN_SEQ { get; set; }
-            [NameMapping("CName")]
-            public string COLUMN_SHOW_NAME { get; set; }
-            [NameMapping("Name")]
-            public string COLUMN_ALIAS_NAME { get; set; }
-            [NameMapping("CType")]
-            public string COLUMNTYPE_CODE { get; set; }
-            [NameMapping("IsShow")]
-            public string IS_SELECT_FG { get; set; }
-            public string USER_ID { get; set; }
-            public DateTime UPDATE_TIME { get; set; }
-        }
+        //class UDA_D_JOINOUTPUT
+        //{
+        //    public int SEARCH_NO { get; set; }
+        //    public int STEP_ID { get; set; }
+        //    public int COLUMN_SEQ { get; set; }
+        //    [NameMapping("SRCStep")]
+        //    public int SRC_STEP_ID { get; set; }
+        //    [NameMapping("ColumnSeq")]
+        //    public int SRC_COLUMN_SEQ { get; set; }
+        //    [NameMapping("CName")]
+        //    public string COLUMN_SHOW_NAME { get; set; }
+        //    [NameMapping("Name")]
+        //    public string COLUMN_ALIAS_NAME { get; set; }
+        //    [NameMapping("CType")]
+        //    public string COLUMNTYPE_CODE { get; set; }
+        //    [NameMapping("IsShow")]
+        //    public string IS_SELECT_FG { get; set; }
+        //    public string USER_ID { get; set; }
+        //    public DateTime UPDATE_TIME { get; set; }
+        //}
 
         /// <summary>
         /// 定義聚合檔
@@ -809,27 +809,27 @@ namespace IGA06
         /// <summary>
         /// 定義聚合輸出欄位檔
         /// </summary>
-        class UDA_D_AGGRATIONOUTPUT
-        {
-            public int SEARCH_NO { get; set; }
-            public int STEP_ID { get; set; }
-            public int COLUMN_SEQ { get; set; }
-            [NameMapping("CStep")]
-            public int SRC_STEP_ID { get; set; }
-            [NameMapping("ColumnSeq")]
-            public int SRC_COLUMN_SEQ { get; set; }
-            public string AGGREGATION_CODE { get; set; }
-            [NameMapping("CName")]
-            public string COLUMN_SHOW_NAME { get; set; }
-            [NameMapping("Name")]
-            public string COLUMN_ALIAS_NAME { get; set; }
-            [NameMapping("CType")]
-            public string COLUMNTYPE_CODE { get; set; }
-            [NameMapping("IsSelected")]
-            public string IS_SELECT_FG { get; set; }
-            public string USER_ID { get; set; }
-            public DateTime UPDATE_TIME { get; set; }
-        }
+        //class UDA_D_AGGRATIONOUTPUT
+        //{
+        //    public int SEARCH_NO { get; set; }
+        //    public int STEP_ID { get; set; }
+        //    public int COLUMN_SEQ { get; set; }
+        //    [NameMapping("CStep")]
+        //    public int SRC_STEP_ID { get; set; }
+        //    [NameMapping("ColumnSeq")]
+        //    public int SRC_COLUMN_SEQ { get; set; }
+        //    public string AGGREGATION_CODE { get; set; }
+        //    [NameMapping("CName")]
+        //    public string COLUMN_SHOW_NAME { get; set; }
+        //    [NameMapping("Name")]
+        //    public string COLUMN_ALIAS_NAME { get; set; }
+        //    [NameMapping("CType")]
+        //    public string COLUMNTYPE_CODE { get; set; }
+        //    [NameMapping("IsSelected")]
+        //    public string IS_SELECT_FG { get; set; }
+        //    public string USER_ID { get; set; }
+        //    public DateTime UPDATE_TIME { get; set; }
+        //}
 
         /// <summary>
         /// 定義輸出檔

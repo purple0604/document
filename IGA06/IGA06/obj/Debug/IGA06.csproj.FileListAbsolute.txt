@@ -9,5 +9,6 @@ D:\document\IGA06\IGA06\bin\Accudata.Data.Model.dll
 D:\document\IGA06\IGA06\bin\Accudata.Service.Model.dll
 D:\document\IGA06\IGA06\bin\Accudata.Uda.Client.dll
 D:\document\IGA06\IGA06\bin\Accudata.Uda.ServiceInterface.dll
+D:\document\IGA06\IGA06\obj\Debug\IGA06.csprojResolveAssemblyReference.cache
 D:\document\IGA06\IGA06\obj\Debug\IGA06.dll
 D:\document\IGA06\IGA06\obj\Debug\IGA06.pdb

@@ -276,22 +276,24 @@ function saveDataJoinResult() {
     for (var i = 0; i < tdDjOutputResult.length; i++) {
         var dr = $(tdDjOutputResult[i]).children();//取得整筆DataRow
         var isChecked = $($(dr[2]).children())[0].checked;
-        //取得tr.column的資訊
-        var col = JSON.parse($(tdDjOutputResult[i]).attr('column'));
+        if (isChecked) {
+            //取得tr.column的資訊
+            var col = JSON.parse($(tdDjOutputResult[i]).attr('column'));
+            
+            var dCol = new Column();
+            dCol.CStep = col.CStep;//步驟
+            dCol.Name = col.Name;//資料欄位<欄位名稱>
+            dCol.CName = $(dr[1])[0].childNodes[0].value;//欄位命名
+            dCol.CType = col.CType;//欄位型態
+            dCol.DataSourceName = $(dr[3]).html(); //資料表<資料來源名稱>
+            dCol.IsSelected = col.IsSelected;//是否選擇
+            dCol.IsShow = isChecked ? "Y" : "N";//是否顯示為結果
+            dCol.ColumnSeq = col.ColumnSeq;//欄位序號
+            dCol.DataSourceCName = $(dr[5]).html();//資料表中文名稱
+            dCol.SRCStep = col.SRCStep;//資料來源Step
 
-        var dCol = new Column();
-        dCol.CStep = col.CStep;//步驟
-        dCol.Name = col.Name;//資料欄位<欄位名稱>
-        dCol.CName = $(dr[1])[0].childNodes[0].value;//欄位命名
-        dCol.CType = col.CType;//欄位型態
-        dCol.DataSourceName = $(dr[3]).html(); //資料表<資料來源名稱>
-        dCol.IsSelected = col.IsSelected;//是否選擇
-        dCol.IsShow = isChecked ? "Y" : "N";//是否顯示為結果
-        dCol.ColumnSeq = col.ColumnSeq;//欄位序號
-        dCol.DataSourceCName = $(dr[5]).html();//資料表中文名稱
-        dCol.SRCStep = col.CStep;//資料來源Step
-
-        ShowColumnsCache.push(dCol);
+            ShowColumnsCache.push(dCol);
+        }
     }
 
     if (ShowColumnsCache.length == 0) {
@@ -355,17 +357,17 @@ function saveCustResult(tableN, custType) {
             cCol.ColumnSeq = col.ColumnSeq;//欄位序號<來源欄位序號>
 
             CustArrCache.push(cCol);
+        } else {
+            var tCol = new Column();
+            tCol.CStep = col.CStep;//步驟
+            tCol.Name = col.Name;//資料欄位<欄位名稱>
+            tCol.CName = col.CName;//欄位<欄位中文名稱>
+            tCol.CType = col.CType;//欄位型態
+            tCol.IsSelected = col.IsSelected;//是否選擇
+            tCol.ColumnSeq = col.ColumnSeq;//欄位序號<來源欄位序號>
+
+            AllArrCache.push(tCol);
         }
-
-        var tCol = new Column();
-        tCol.CStep = col.CStep;//步驟
-        tCol.Name = col.Name;//資料欄位<欄位名稱>
-        tCol.CName = col.CName;//欄位<欄位中文名稱>
-        tCol.CType = col.CType;//欄位型態
-        tCol.IsSelected = col.IsSelected;//是否選擇
-        tCol.ColumnSeq = col.ColumnSeq;//欄位序號<來源欄位序號>
-
-        AllArrCache.push(tCol);
     }
 
     if (CustArrCache.length == 0) {
@@ -386,15 +388,17 @@ function saveCustColsResult(tableN) {
         var dr = $(tdCustTableResult[i]).children();//取得整筆DataRow
         var col = JSON.parse($(tdCustTableResult[i]).attr('column'));//取得tr.column的資訊
 
-        var tCol = new Column();
-        tCol.CStep = col.CStep;//步驟
-        tCol.Name = col.Name;//資料欄位<欄位名稱>
-        tCol.CName = col.CName;//欄位<欄位中文名稱>
-        tCol.CType = col.CType;//欄位型態
-        tCol.IsSelected = col.IsSelected;//是否選擇
-        tCol.ColumnSeq = col.ColumnSeq;//欄位序號<來源欄位序號>
+        if ($(dr[5]).html() == "") {
+            var tCol = new Column();
+            tCol.CStep = col.CStep;//步驟
+            tCol.Name = col.Name;//資料欄位<欄位名稱>
+            tCol.CName = col.CName;//欄位<欄位中文名稱>
+            tCol.CType = col.CType;//欄位型態
+            tCol.IsSelected = col.IsSelected;//是否選擇
+            tCol.ColumnSeq = col.ColumnSeq;//欄位序號<來源欄位序號>
 
-        current.AllColumns.push(tCol);
+            current.AllColumns.push(tCol);
+        }
     }
 }
 
@@ -518,7 +522,7 @@ function dataRevert(searchNo) {
 //一般聚合：輸出結果明細，包含：SUM、AVG、MAX、MIN、COUNT
 function appendCustTR(m, dataCol, dTableName, tableN, txtBoxN, chkBoxN, dTableCName) {
     var isChecked = null, isDisabled = null, cName = null;
-
+    
     if (current.CustColumns.length > 0) {
         for (var i = 0; i < current.CustColumns.length; i++) {
             isChecked = current.CustColumns[i].Name == dataCol[m].Name ? "checked" : "";

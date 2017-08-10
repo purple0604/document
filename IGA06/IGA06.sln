@@ -19,11 +19,4 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = IGA06\\IGA06.csproj
-		SccLocalPath1 = .
-		SccProjectFilePathRelativizedFromConnection1 = IGA06\\
-	EndGlobalSection
 EndGlobal
