@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自訂聚合</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="JS/publicJS.js"></script>
+</head>
+<body id="customize">
+    <div id="dgCustomize"></div>
+    <div id="dgCustomize_H" style="visibility:hidden">
+        <!--自訂聚合，下方註解為寫入dgCustomize的Templete，請勿刪除-->
+        <!--<div>輸出結果明細</div>
+        <div>
+            <table width="100%" id="tdCustomizeResult">
+                <thead>
+                    <tr>
+                        <td>欄位</td>
+                        <td style="display:none;">資料表</td>
+                        <td style="display:none;">資料欄位</td>
+                        <td>資料表中文名稱</td>
+                        <td></td>
+                        <td>聚合設定</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>-->
+    </div>
+
+    <div id="dgCustSetting"></div>
+    <div id="dgCustSetting_H" style="visibility:hidden">
+        <!--自訂聚合設定，下方註解為寫入dgCustSetting的Templete，請勿刪除-->
+        <!--<table width="100%" id="tdCustSettingResult">
+            <thead>
+                <tr>
+                    <td>選</td>
+                    <td width="30%">聚合函數</td>
+                    <td>
+                        聚合欄位名命名
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="chkCustIsCheck" onclick="chgTextBoxIsDisabled(this);" />
+                    </td>
+                    <td custType="1">SUM</td>
+                    <td>
+                        <input type="text" name="txtCustNameAs" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="chkCustIsCheck" onclick="chgTextBoxIsDisabled(this);" />
+                    </td>
+                    <td custType="2">AVG</td>
+                    <td>
+                        <input type="text" name="txtCustNameAs" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="chkCustIsCheck" onclick="chgTextBoxIsDisabled(this);" />
+                    </td>
+                    <td custType="3">MAX</td>
+                    <td>
+                        <input type="text" name="txtCustNameAs" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="chkCustIsCheck" onclick="chgTextBoxIsDisabled(this);" />
+                    </td>
+                    <td custType="4">MIN</td>
+                    <td>
+                        <input type="text" name="txtCustNameAs" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" name="chkCustIsCheck" onclick="chgTextBoxIsDisabled(this);" />
+                    </td>
+                    <td custType="5">COUNT</td>
+                    <td>
+                        <input type="text" name="txtCustNameAs" disabled="disabled" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>-->
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var custName = null, custTableName = null, preStepIsDataJoin = null;
+    var custTypeTD = null;//聚合設定欄位TD
+    var custTypeArr = [];//紀錄有勾選的聚合函數
+    var CustomizeArrCache = [];//暫存空間
+
+    $(document).ready(function () {
+        //取得隱藏於dgCustomize_H下的註解內容，並顯示至dgCustomize
+        $("#dgCustomize").append(getComment(document.getElementById("dgCustomize_H"), 2));
+
+        //將JSON內的資訊寫回暫存空間
+        for (var ii = 0 ; ii < current.CustColumns.length; ii++) {
+            CustomizeArrCache.push(current.CustColumns[ii])
+        }
+
+        var preData = dIGA.Step[current.Step - 2];//前步驟資訊
+        
+        //資料的來源設定
+        if (preData.StepFeatures == "DataSRC") {//資料來源
+            for (var i = 0; i < preData.Columns.length; i++) {
+                if (preData.Columns[i].IsSelected == "Y") {
+                    appendCustomizeTR(i, preData.Columns, preData.Name + '.' + preData.TableName);
+                }
+            }
+        } else if (preData.StepFeatures == "DataJoin") {//資料連結
+            for (var j = 0; j < preData.ShowColumns.length; j++) {
+                appendCustomizeTR(j, preData.ShowColumns, preData.ShowColumns[j].DataSourceName);
+            }
+        }
+
+        //自訂聚合設定Dialog
+        $("#dgCustSetting").dialog({
+            autoOpen: false,
+            resizable: false,
+            draggable: false,
+            height: 350,
+            width: 450,
+            modal: true,
+            buttons: {
+                "確認": dCustSettingOK,
+                "關閉": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        //自訂聚合設定Dialog - 確認
+        function dCustSettingOK() {
+            var isCheck = false;
+            custTypeArr = [];
+            
+            //將有勾選的欄位編審是否重複命名、不包含特殊字元、不包含保留字
+            isCheck = checkColName("tdCustSettingResult", "chkCustIsCheck", "txtCustNameAs")
+
+            if (isCheck) {
+                //移除JSON內變更前的資料，僅保留最新資料
+                var dCustColumnCnt = CustomizeArrCache;
+                for (var m = dCustColumnCnt.length - 1; m >= 0; m--) {
+                    //找出相符的，進行刪除
+                    if ((dCustColumnCnt[m].Name == custName) && (dCustColumnCnt[m].TableName == custTableName)) {
+                        dCustColumnCnt.splice(m, 1);
+                    }
+                }
+
+                //取得tdCustSettingResult.column的資訊
+                var col = JSON.parse($("#tdCustSettingResult").attr("column"));
+
+                //寫入JSON
+                var tdCustSettingResult = $("#tdCustSettingResult tbody tr");
+                for (var i = 0; i < tdCustSettingResult.length; i++) {
+                    var dr = $(tdCustSettingResult[i]).children();//取得整筆DataRow
+
+                    var isChecked = $($(dr[0]).children())[0].checked;
+                    if (isChecked) {
+                        var cCol = new CustColumn();
+                        if (preStepIsDataJoin) {
+                            cCol.CStep = pStep;//步驟<來源步驟代號>
+                        } else {
+                            cCol.CStep = col.CStep;//步驟<來源步驟代號>
+                        }
+                        cCol.Name = custName;//資料欄位<欄位名稱>
+                        cCol.CName = col.CName;//欄位<欄位中文名稱>
+                        cCol.CType = col.CType;//欄位型態
+                        cCol.TableName = custTableName;//資料表<資料庫資料表>
+                        cCol.CustType = $(dr[1]).attr('custType');//聚合函數代號<聚合型態>
+                        cCol.UPDName = getCommentInput(dr[2], 1, 1);//聚合欄位名命名
+                        cCol.ColumnSeq = col.ColumnSeq;//欄位序號<來源欄位序號>
+
+                        CustomizeArrCache.push(cCol);//寫入暫存空間
+                        custTypeArr.push($(dr[1]).html());//將聚合函數寫入陣列
+                    }
+                }
+                //確認後，將所有設定聚合函數的寫回聚合設定欄
+                $(custTypeTD).html(custTypeArr.join(","));
+
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    //輸出結果明細
+    function appendCustomizeTR(m, dataCol, dTableName) {
+        custTypeArr = [];
+
+        //若存在於JSON內，則顯示JSON已紀錄的資訊
+        if (current.CustColumns.length > 0) {
+            for (var i = 0; i < current.CustColumns.length; i++) {
+                if ((current.CustColumns[i].CName == dataCol[m].CName) && (current.CustColumns[i].TableName == dataCol[m].DataSourceCName)) {
+                    custTypeArr.push(getCodeName("AGGREGATION_CODE", current.CustColumns[i].CustType));
+                }
+            }
+        }
+        
+        $("#tdCustomizeResult tbody").append('<tr column=\'' + JSON.stringify(dataCol[m]) + '\'><td>' + dataCol[m].CName + '</td><td style="display:none;">' + dTableName + '</td><td style="display:none;">' + dataCol[m].Name + '</td><td>' + dataCol[m].DataSourceCName + '</td><td><button onclick="custSettingDialog(this);">自訂</button></td><td>' + custTypeArr.join(",") + '</td></tr>');
+    }
+
+    //開啟自訂聚合「自訂」視窗
+    function custSettingDialog(e) {
+        //清空div避免下方資訊重複寫入
+        $("#dgCustSetting").empty();
+        //取得隱藏於dgCustSetting_H下的註解內容，並顯示至dgCustSetting
+        $("#dgCustSetting").append(getComment(document.getElementById("dgCustSetting_H"), 2));
+
+        //紀錄來自前一個dailog的資料於變數中：custName:資料欄位、custTableName:資料表、custTypeTD:該筆聚合設定欄位TD
+        custName = getPreviousSibling(getPreviousSibling(getPreviousSibling(getPreviousSibling(e.parentElement)))).outerText
+        custTableName = getPreviousSibling(e.parentElement).outerText;
+        custTypeTD = getNextSibling(e.parentElement);
+        $("#tdCustSettingResult").attr("column", $(e.parentElement.parentElement).attr('column'));
+
+        //dialog Title顯示變更
+        var options = {
+            title: custName + "-聚合設定",
+        }
+        $("#dgCustSetting").dialog(options);
+
+        //開窗時，恢復所有控制項
+        $("input[name='chkCustIsCheck']").attr("checked", false);
+        $("input[name='txtCustNameAs']").attr("value", "");
+        $("input[name='txtCustNameAs']").attr("disabled", "disabled");
+
+        //若存在於JSON內，則顯示JSON已紀錄的資訊
+        var tdCustSettingResult = $("#tdCustSettingResult tbody tr");
+        var dCustColumnCnt = CustomizeArrCache;//暫存內Data
+        preStepIsDataJoin = current.StepFeatures == "DataJoin" ? true : false;//判斷前步驟是否為資料連結
+
+        if (dCustColumnCnt.length != 0) {
+            for (var i = 0; i < tdCustSettingResult.length; i++) {
+                var custTypeVal = $(tdCustSettingResult[i].children[1]).attr('custType');//取得聚合函數
+
+                for (var j = 0; j < dCustColumnCnt.length; j++) {
+                    //找出相符的，變更控制項
+                    if ((dCustColumnCnt[j].Name == custName) && (dCustColumnCnt[j].TableName == custTableName) && (dCustColumnCnt[j].CustType == custTypeVal)) {
+                        $("input[name='chkCustIsCheck']")[i].checked = true;
+                        $("input[name='txtCustNameAs']")[i].value = dCustColumnCnt[j].UPDName;
+                        $("input[name='txtCustNameAs']")[i].disabled = false;
+                    }
+                }
+            }
+        }
+
+        $("#dgCustSetting").dialog("open");
+    }
+</script>

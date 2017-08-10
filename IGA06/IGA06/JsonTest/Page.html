@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var data = new Data();
+            data.AddTable(new TableData("tb1"));
+            data.AddTable(new TableData("tb2"));
+            data.Tables[0].AddCondition("F1", "=", new Date());
+            var jsonStr = JSON.stringify(data);
+           
+            $.ajax({
+                url:"Handler_Json.ashx",
+                type: 'GET',
+                data: { Data:jsonStr}
+            });
+
+           // debugger;
+        });
+
+
+        function Data(){
+            this.Tables = new Array();
+            
+            this.AddTable = function(table) {
+                this.Tables.push(table);
+            }
+
+        }
+
+        function TableData(name) {
+            this.Name = name;
+            this.Condition = new Array();
+
+            this.AddCondition = function (columnName, operation, value) {
+                this.Condition.push(new Condition(columnName, operation, value));
+            }
+        }
+
+        function Condition(columnName,operation,value) {
+            this.ColumnName = columnName;
+            this.Operation = operation;
+            this.Value = value;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

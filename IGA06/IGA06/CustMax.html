@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MAX聚合</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="JS/publicJS.js"></script>
+</head>
+<body id="custMax">
+    <div id="dgCustMax"></div>
+    <div id="dgCustMax_H" style="visibility:hidden">
+        <!--MAX聚合，下方註解為寫入dgCustMax的Templete，請勿刪除-->
+        <!--<div>輸出結果明細</div>
+        <div style="max-height:360px;overflow-y: scroll;">
+            <table width="100%" id="tdCustMaxResult">
+                <thead>
+                    <tr>
+                        <td>欄位</td>
+                        <td>聚合欄位命名</td>
+                        <td>Max聚合</td>
+                        <td style="display:none;">資料表</td>
+                        <td style="display:none;">資料欄位</td>
+                        <td>資料表中文名稱</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>-->
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //取得隱藏於dgCustMax_H下的註解內容，並顯示至dgCustMax
+        $("#dgCustMax").append(getComment(document.getElementById("dgCustMax_H"), 2));
+
+        var preData = dIGA.Step[current.Step - 2];
+
+        //資料來源的設定
+        if (preData.StepFeatures == "DataSRC") {//資料來源
+
+            for (var i = 0; i < preData.Columns.length; i++) {
+                if (preData.Columns[i].IsSelected == "Y") {
+                    appendCustTR(i, preData.Columns, preData.Name + '.' + preData.TableName, "tdCustMaxResult", "txtCXNameAs", "chkCXIsCheck", preData.TableCName);
+                }
+            }
+
+        } else if (preData.StepFeatures == "DataJoin") {//資料連結
+
+            for (var j = 0; j < preData.ShowColumns.length; j++) {
+                appendCustTR(j, preData.ShowColumns, preData.ShowColumns[j].DataSourceName, "tdCustMaxResult", "txtCXNameAs", "chkCXIsCheck", preData.ShowColumns[j].DataSourceCName);
+            }
+
+        }
+    });
+</script>

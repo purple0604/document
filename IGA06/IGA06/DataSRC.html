@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>資料來源</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="JS/publicJS.js"></script>
+</head>
+<body id="dataSRC">
+    <div id="dgDefineDataSRC">
+        <table width="100%">
+            <!--定義資料來源-->
+            <tr>
+                <td width="40%">選擇來源</td>
+                <td>
+                    <button onclick="selDataSRCDialog();">...</button>
+                    <span id="isMainSRC"></span>
+                </td>
+            </tr>
+            <tr style="display:none;">
+                <td>資料庫資料表</td>
+                <td>
+                    <span id="tableName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>資料表中文名稱</td>
+                <td>
+                    <span id="tableCName"></span>
+                    <button onclick="defineCNameDialog();">自訂</button>
+                </td>
+            </tr>
+            <tr>
+                <td>選擇欄位</td>
+                <td>
+                    <button onclick="selColumnsDialog();">...</button>
+                </td>
+            </tr>
+            <tr>
+                <td>列篩選條件</td>
+                <td>
+                    <button onclick="filterConditionDialog();">...</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="dgSelDataSRC">
+        <!--選擇來源-->
+        <table width="100%">
+            <tr>
+                <td width="30%">來源別</td>
+                <td id="tdSelSource">
+                    <select id="selSource"></select>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div style="max-height:260px;overflow-y: scroll;">
+            <table width="100%" id="tbDataTable">
+                <thead>
+                    <tr>
+                        <td width="10%">選</td>
+                        <td style="display:none;">資料庫資料表</td>
+                        <td>資料表中文名稱</td>
+                        <td style="display:none;">版本號</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="dgDefineCName">
+        <!--自訂中文名稱-->
+        <table width="100%">
+            <tr>
+                <td width="30%">原中文名稱</td>
+                <td>
+                    <span id="firstTableCName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>自訂中文名稱</td>
+                <td>
+                    <input type="text" id="defineTableCName" />
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="dgSelColumns"></div>
+    <div id="dgSelColumns_H" style="visibility:hidden">
+        <!--選擇欄位(可做列篩選)，下方註解為寫入dgSelColumns的Templete，請勿刪除-->
+        <!--<table width="100%">
+            <tr style="display:none;">
+                <td width="30%">資料庫資料表</td>
+                <td>
+                    <span id="cTableName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>資料表中文名稱</td>
+                <td>
+                    <span id="cTableCName"></span>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div style="max-height:290px;overflow-y: scroll;">
+            <table width="100%" id="tbDataColumns">
+                <thead>
+                    <tr>
+                        <td style="display:none;">資料庫欄位</td>
+                        <td>欄位中文名稱</td>
+                        <td>欄位型態</td>
+                        <td>列篩選</td>
+                        <td>選擇</td>
+                        <td style="display:none;">欄位序號</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>-->
+    </div>
+
+    <div id="dgFilterColumns"></div>
+    <div id="dgFilterColumns_H" style="visibility:hidden">
+        <!--列篩選，下方註解為寫入dgFilterColumns的Templete，請勿刪除-->
+        <!--
+        <table width="100%">
+            <tr style="display:none;">
+                <td width="30%">資料庫欄位</td>
+                <td><span id="fColumn"></span></td>
+            </tr>
+            <tr>
+                <td>欄位中文名稱</td>
+                <td><span id="fColumnCName"></span></td>
+            </tr>
+            <tr>
+                <td>欄位型態</td>
+                <td><span id="fColumnType"></span></td>
+            </tr>
+            <tr>
+                <td>條件方式</td>
+                <td>
+                    <input type="radio" name="fConditionType" value="2" />固定條件
+                    <input type="radio" name="fConditionType" value="1" />浮動條件
+                </td>
+            </tr>
+            <tr>
+                <td>條件定義</td>
+                <td>
+                    <select id="fConditionDefine">
+                        <option value="1" selected="selected">等於(=)</option>
+                        <option value="2">大於(>)</option>
+                        <option value="3">小於(<)</option>
+                        <option value="4">大於等於(>=)</option>
+                        <option value="5">小於等於(<=)</option>
+                        <option value="6">符合(in)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="trCStr">
+                <td>條件值(字串)</td>
+                <td>
+                    <input type="text" id="fConditionStr" />
+                </td>
+            </tr>
+            <tr id="trCNum">
+                <td>條件值(數值)</td>
+                <td>
+                    <input type="number" id="fConditionNum" min="0" />
+                </td>
+            </tr>
+            <tr id="trCDate">
+                <td>條件值(日期)</td>
+                <td>
+                    <input id="fConditionDatepicker" disabled="disabled" />
+                </td>
+            </tr>
+            <tr style="display:none;">
+                <td>
+                    <span id="fColumnSeq"></span>
+                </td>
+            </tr>
+        </table>-->
+    </div>
+
+    <div id="dgFilterCondition">
+        <!--列篩選條件-->
+        <table width="100%">
+            <tr style="display:none;">
+                <td width="30%">資料庫資料表</td>
+                <td>
+                    <span id="fTableName"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>資料表中文名稱</td>
+                <td>
+                    <span id="fTableCName"></span>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <div style="max-height:290px;overflow-y: scroll;">
+            <table width="100%" id="tbFilterCondition">
+                <thead>
+                    <tr>
+                        <td style="display:none;">資料庫欄位</td>
+                        <td>欄位中文名稱</td>
+                        <td>欄位型態</td>
+                        <td>列篩選</td>
+                        <td>條件定義</td>
+                        <td>條件值</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (current.Step == 1) {
+            $("#isMainSRC").html("主來源");
+        } else {
+            $("#isMainSRC").html("副來源");
+        }
+        $("#tableName").html(current.TableName);
+        $("#tableCName").html(current.TableCName);
+
+        //選擇來源
+        $("#dgSelDataSRC").dialog({
+            title: "選擇來源",
+            autoOpen: false,
+            resizable: false,
+            draggable: false,
+            height: 450,
+            width: 500,
+            modal: true,
+            buttons: {
+                "確認": sDataSRCOK,
+                "關閉": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        function sDataSRCOK() {
+            var selSourceVal = $('#selSource :selected').val();//來源別
+
+            if (selSourceVal == "-1") {
+                alert("請選擇來源別");
+                return;
+            } else {
+                var chkTableVal = $("input:checkbox:checked[name='chkTable']");//當前被勾選的
+                var chkTableNameVal = null, chkTableCNameVal = null, chkVerNoVal = null;
+
+                if (typeof chkTableVal.attr('checked') == "undefined") {
+                    alert("請選擇資料表");
+                    return;
+                } else {
+                    chkTableNameVal = getNextSibling($(chkTableVal)[0].parentElement).outerText;//當前被勾選的資料庫資料表
+                    chkTableCNameVal = getNextSibling(getNextSibling($(chkTableVal)[0].parentElement)).outerText;//當前被勾選的資料表中文名稱
+                    chkVerNoVal = getNextSibling(getNextSibling(getNextSibling($(chkTableVal)[0].parentElement))).outerText;//當前被勾選的版本號
+
+                    if (chkTableNameVal != current.TableName && current.TableName != "") {
+                        //判斷是否變更資料表來源
+                        if (!confirm("確定變更資料表來源？變更後相關設定將會清除。")) {
+                            return;
+                        } else {
+                            //清除JSON紀錄
+                            current.Columns = [];
+                        }
+                    }
+                }
+
+                current.TableName = chkTableNameVal;
+                current.TableCName = chkTableCNameVal;
+                current.VerNo = chkVerNoVal;
+
+                //選擇資料表的同時，將欄位也寫入Json內
+                var sData = {
+                    "Get": "tbDataColumns",
+                    "tableName": current.TableName
+                };
+                function successFun(response) {
+                    var m = 1;
+                    for (var i = 0; i < response.length; i++) {
+                        var dCol = new Column();
+                        dCol.CStep = current.Step;//步驟
+                        dCol.Name = response[i]["NAME"];//資料欄位<欄位名稱>
+                        dCol.CName = response[i]["C_NAME"];//欄位<欄位中文名稱>
+                        dCol.CType = response[i]["C_TYPE"];//欄位型態代碼
+                        dCol.IsSelected = "Y";//是否選擇
+                        dCol.ColumnSeq = m;//欄位序號
+                        dCol.DataSourceName = current.Name + '.' + current.TableName;//資料表名稱
+                        dCol.DataSourceCName = current.TableCName;//資料表中文名稱
+
+                        current.Columns.push(dCol);
+                        m++;
+                    }
+                }
+                callAjax("GetDataHandler.ashx", sData, "JSON", successFun);
+
+                $("#tableName").html(current.TableName);
+                $("#tableCName").html(current.TableCName);
+                $(this).dialog("close");
+            }
+        }
+
+        //自訂中文名稱
+        $("#dgDefineCName").dialog({
+            title: "自訂中文名稱",
+            autoOpen: false,
+            resizable: false,
+            draggable: false,
+            height: 200,
+            width: 450,
+            modal: true,
+            buttons: {
+                "確認": dCNameOK,
+                "關閉": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        function dCNameOK() {
+            var defineTableCNameVal = $("#defineTableCName").val();//自訂中文名稱
+            if (defineTableCNameVal != "") {
+                current.TableCName = defineTableCNameVal;
+                $("#tableCName").html(current.TableCName);
+                $(this).dialog("close");
+            } else {
+                alert("自訂中文名稱未輸入");
+            }
+        }
+
+        //選擇欄位
+        $("#dgSelColumns").dialog({
+            title: "選擇欄位(可做列篩選)",
+            autoOpen: false,
+            resizable: false,
+            draggable: false,
+            height: 500,
+            width: 800,
+            modal: true,
+            buttons: {
+                "確認": sColumnsOK,
+                "關閉": function () {
+                    $('#dgSelColumns').empty();
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        function sColumnsOK() {
+            var tbDataCol = $("#tbDataColumns tbody tr");//取得所有資料庫欄位
+            var dColumCnt = current.Columns;//取得紀錄於JSON內Columns
+
+            for (var m = 0; m < tbDataCol.length; m++) {
+                var dr = $(tbDataCol[m]).children();//取得整筆DataRow
+                var chkIsShow = $($(dr[4]).children())[0].checked;//是否勾選選擇
+
+                //↓比較兩者間是否已有欄位資訊存在於JSON內，若已存在即修改，否則新增↓
+                var i = 0
+                for (; i < dColumCnt.length; i++) {
+                    var dCol = dColumCnt[i];
+                    if (dCol.Name == $(dr[0]).html()) {//修改
+                        dCol.CType = $(dr[2]).attr('cType');//欄位型態代碼
+                        dCol.IsSelected = chkIsShow ? "Y" : "N";//是否選擇
+                        dCol.ColumnSeq = parseInt($(dr[5]).html());//欄位序號
+                        break;
+                    }
+                }
+            }
+
+            $(this).dialog("close");
+            $('#dgSelColumns').empty();
+        }
+
+        //列篩選
+        $("#dgFilterColumns").dialog({
+            title: "列篩選",
+            autoOpen: false,
+            resizable: false,
+            draggable: false,
+            height: 300,
+            width: 500,
+            modal: true,
+            buttons: {
+                "確認": fColumnsOK,
+                "關閉": function () {
+                    $('#dgFilterColumns').empty();
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        function fColumnsOK() {
+            var dColumCnt = current.Columns;//取得紀錄於JSON內Columns
+            var isUpdate = false;//判斷模式
+
+            //修改模式
+            for (var i = 0; i < dColumCnt.length; i++) {
+                var dCol = dColumCnt[i];
+                if (dCol.Name == $("#fColumn").html()) {
+                    var fConTypeVal = $('input[name="fConditionType"]:checked').val();//條件方式(浮動、條件)
+                    //依據條件方式取得條件值結果
+                    var condVal;
+                    if (fConTypeVal == "2") {
+                        switch (dCol.CType) {
+                            case "1"://string
+                                condVal = $("#fConditionStr").val();
+                                break;
+                            case "2"://number
+                                condVal = $("#fConditionNum").val();
+                                break;
+                            case "3"://datetime
+                                condVal = $("#fConditionDatepicker").val();
+                                break;
+                        }
+
+                        if (condVal != "") {
+                            dCol.ConditionValue = condVal;//條件值
+                        } else {
+                            alert("請輸入條件值");
+                            return;
+                        }
+                    } else {
+                        dCol.ConditionValue = "";
+                    }
+
+                    dCol.ConditionType = fConTypeVal;
+                    dCol.ConditionDefine = $("#fConditionDefine").val();//條件定義
+                    isUpdate = true;
+                }
+            }
+
+            $(this).dialog("close");
+            updateTbFilterCondition(dColumCnt);
+            $('#dgFilterColumns').empty();
+        }
+
+        //列篩選條件
+        $("#dgFilterCondition").dialog({
+            title: "列篩選條件",
+            autoOpen: false,
+            resizable: false,
+            draggable: false,
+            height: 500,
+            width: 1000,
+            modal: true,
+            buttons: {
+                "關閉": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+    });
+
+    //選擇來源DialogOpen
+    function selDataSRCDialog() {
+        var sData = {
+            "Get": "selDataSRC",
+        };
+        function successFun(response) {
+            $("#tbDataTable tbody tr").detach();//清空既有Table
+            $("#selSource").detach();//清空select選單
+            //寫入select選單
+            $("#tdSelSource").append('<select id="selSource"><option value="-1">---請選擇---</option></select>');
+            for (var i = 0; i < response.length; i++) {
+                $("#selSource").append('<option value="' + response[i]["NAME"] + '">' + response[i]["NAME"] + '</option>');
+            }
+
+            //若存在於JSON內，則顯示JSON已紀錄的資訊
+            $("#selSource option[value='" + current.Name + "']").attr("selected", "selected");
+            getTbDataTable(current);
+
+            //來源別變更時，顯示下方資料表
+            $("#selSource").on("change", function () {
+                current.Name = $(this).val();
+                getTbDataTable(current);
+            });
+        }
+        callAjax("GetDataHandler.ashx", sData, "JSON", successFun);
+
+        $("#dgSelDataSRC").dialog("open");
+    }
+
+    //自訂中文名稱DialogOpen
+    function defineCNameDialog() {
+        $("#firstTableCName").html(current.TableCName);//原中文名稱
+        $("#defineTableCName").val(current.TableCName);//自訂中文名稱
+        $("#dgDefineCName").dialog("open");
+    }
+
+    //選擇欄位DialogOpen
+    function selColumnsDialog() {
+        //取得隱藏於dgSelColumns_H下的註解內容，並顯示至dgSelColumns
+        $("#dgSelColumns").append(getComment(document.getElementById("dgSelColumns_H"), 2));
+
+        $("#cTableName").html(current.TableName);//資料庫資料表
+        $("#cTableCName").html(current.TableCName);//資料表中文名稱
+
+        var sData = {
+            "Get": "tbDataColumns",
+            "tableName": current.TableName
+        };
+        function successFun(response) {
+            $("#tbDataColumns tbody tr").detach();//清空既有Table
+            //寫入Table Data
+            var m = 1;
+            for (var i = 0; i < response.length; i++) {
+                $("#tbDataColumns tbody").append('<tr><td style="display:none;">' + response[i]["NAME"] + '</td><td>' + response[i]["C_NAME"] + '</td><td cType="' + response[i]["C_TYPE"] + '">' + getCodeName("COLUMN_TYPE_CODE", response[i]["C_TYPE"]) + '</td><td><button onclick="filterColumnsDialog(this);">...</button></td><td align="center"><input type="checkbox" name="chkColIsSelected" checked value="' + response[i]["NAME"] + '" /></td><td style="display:none;">' + m + '</td></tr>');
+                m++;
+            }
+
+            //若存在於JSON內，則顯示JSON已紀錄的資訊
+            var dColumCnt = current.Columns;
+            for (var i = 0; i < dColumCnt.length; i++) {
+                var dCol = dColumCnt[i];
+                $("input[name='chkColIsSelected'][value='" + dCol.Name + "']").attr('checked', dCol.IsSelected == "Y" ? true : false);
+            }
+        }
+        callAjax("GetDataHandler.ashx", sData, "JSON", successFun);
+
+        $("#dgSelColumns").dialog("open");
+    }
+
+    //列篩選DialogOpen
+    function filterColumnsDialog(btn) {
+        //取得隱藏於dgFilterColumns_H下的註解內容，並顯示至dgFilterColumns
+        $("#dgFilterColumns").append(getComment(document.getElementById("dgFilterColumns_H"), 2));
+
+        //取得選擇欄位dgSelColumns內tbDataColumns的其中一筆(選擇的)TR下所有TD，
+        //分別取得資料庫欄位[0]、欄位中文名稱[1]、欄位型態[2]、欄位序號[5]等值顯示於列篩選Dialog
+        var filter = $(btn).parent().parent().children();
+        $("#fColumn").html($(filter[0]).html());//資料庫欄位
+        $("#fColumnCName").html($(filter[1]).html());//欄位中文名稱
+        $("#fColumnType").html($(filter[2]).html());//欄位型態
+        $("#fColumnType").attr('cType', $(filter[2]).attr('cType'));//欄位型態代碼
+        $("input[name='fConditionType']")[0].checked = true;//預設:條件方式
+        $("#fConditionDefine").val(1);//預設:條件定義
+        conditionType($(filter[2]).attr('cType'));//預設:條件值設定
+        $("#fColumnSeq").html($(filter[5]).html());//欄位序號
+
+        $("input[name='fConditionType']").on("change", function () {
+            conditionType($(filter[2]).attr('cType'));
+        });
+
+        //若存在於JSON內，則顯示JSON已紀錄的資訊
+        var dColumCnt = current.Columns;
+        for (var i = 0; i < dColumCnt.length; i++) {
+            var dCol = dColumCnt[i];
+            if (dCol.Name == $("#fColumn").html()) {
+                var cTypeVal = "";
+                if (dCol.ConditionType == "" || dCol.ConditionType == null) {
+                    cTypeVal = 2;
+                } else {
+                    cTypeVal = dCol.ConditionType;
+                }
+
+                $("input[name='fConditionType'][value='" + cTypeVal + "']").attr('checked', true);
+                $("#fConditionDefine").val(dCol.ConditionDefine);
+
+                if (cTypeVal == "2") {
+                    switch (dCol.CType) {
+                        case "1"://string
+                            $("#fConditionStr").val(dCol.ConditionValue);
+                            break;
+                        case "2"://number
+                            $("#fConditionNum").val(dCol.ConditionValue);
+                            break;
+                        case "3"://datatime
+                            $("#fConditionDatepicker").val(dCol.ConditionValue);
+                            break;
+                    }
+                }
+                else {
+                    $("#trCStr").hide();
+                    $("#trCNum").hide();
+                    $("#trCDate").hide();
+                }
+            }
+        }
+
+        $("#dgFilterColumns").dialog("open");
+    }
+
+    //列篩選條件DialogOpen
+    function filterConditionDialog() {
+        $("#fTableName").html(current.TableName);//資料庫資料表
+        $("#fTableCName").html(current.TableCName);//資料庫中文名稱
+
+        //若存在於JSON內，則顯示JSON已紀錄的資訊
+        var dColumCnt = current.Columns;
+        if (dColumCnt.length > 0) {
+            //做排序
+            current.Columns.sort(function (a, b) {
+                return parseInt(a["SEQ"]) > parseInt(b["SEQ"]) ? 1 : parseInt(a["SEQ"]) == parseInt(b["SEQ"]) ? 0 : -1;
+            });
+
+            updateTbFilterCondition(dColumCnt);
+        }
+
+        $("#dgFilterCondition").dialog("open");
+    }
+
+    //依欄位型態顯示條件值，並設定預設
+    function conditionType(columnType) {
+        $("#fConditionDefine").val(1);
+        if ($('input[name="fConditionType"]:checked').val() == "1") {
+            $("#trCStr").hide();
+            $("#trCNum").hide();
+            $("#trCDate").hide();
+        } else {
+            switch (columnType) {
+                case "1"://string
+                    $("#trCStr").show();
+                    $("#fConditionStr").val("");
+                    $("#trCNum").hide();
+                    $("#trCDate").hide();
+                    break;
+                case "2"://number
+                    $("#trCStr").hide();
+                    $("#trCNum").show();
+                    $("#fConditionNum").val("");
+                    $("#trCDate").hide();
+                    break;
+                case "3"://datetime
+                    $("#trCStr").hide();
+                    $("#trCNum").hide();
+                    $("#trCDate").show();
+                    $("#fConditionDatepicker").val("");
+                    $("#fConditionDatepicker").datepicker({
+                        constrainInput: false,
+                        showOn: "button",
+                        buttonText: "...",
+                        dateFormat: "yy-mm-dd"
+                    });
+                    break;
+            }
+        }
+    }
+
+    //列篩選確認後更新列篩選條件Table
+    function updateTbFilterCondition(dColumCnt) {
+        $("#tbFilterCondition tbody tr").detach();//清空既有Table
+        for (var i = 0; i < dColumCnt.length; i++) {
+            var dCol = dColumCnt[i];
+            var ct = "";//條件值
+
+            if ((dCol.ConditionType != "") && (dCol.ConditionType != null)) {
+                switch (dCol.ConditionType) {
+                    case "1":
+                        ct = "${" + dCol.Name + "}";
+                        break;
+                    case "2":
+                        ct = dCol.ConditionValue;
+                        break;
+                }
+
+                $("#tbFilterCondition tbody").append('<tr><td style="display:none;">' + dCol.Name + '</td><td>' + dCol.CName + '</td><td cType="' + dCol.CType + '">' + getCodeName("COLUMN_TYPE_CODE", dCol.CType) + '</td><td><button onclick="filterColumnsDialog(this);">...</button></td><td>' + getCodeName("COND_CODE", dCol.ConditionDefine) + '</td><td>' + ct + '</td></tr>');
+            }
+        }
+    }
+
+    //取得資料庫資料表
+    function getTbDataTable(current) {
+        if (current.Name != "-1") {
+            var sData = {
+                "Get": "tbDataTable",
+                "selSourceVal": current.Name
+            };
+            function successFun(response) {
+                $("#tbDataTable tbody tr").detach();//清空既有Table
+
+                //寫入顯示資料表
+                for (var i = 0; i < response.length; i++) {
+                    var isChecked = current.TableName == response[i]["T_NAME"] ? "checked" : "";
+                    $("#tbDataTable tbody").append('<tr><td align="center"><input type="checkbox" name="chkTable" ' + isChecked + '/></td><td style="display:none;">' + response[i]["T_NAME"] + '</td><td>' + response[i]["C_NAME"] + '</td><td style="display:none;">' + response[i]["VER_NO"] + '</td></tr>');
+                }
+
+                //資料表checkbox單選
+                $("input[name='chkTable']").on("click", function () {
+                    $("input[name='chkTable']").not(this).prop("checked", false);
+                });
+            }
+            callAjax("GetDataHandler.ashx", sData, "JSON", successFun);
+        } else {
+            $("#tbDataTable tbody tr").detach();
+        }
+    }
+</script>

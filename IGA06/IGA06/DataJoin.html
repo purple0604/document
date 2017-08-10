@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>資料連結</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="JS/publicJS.js"></script>
+</head>
+<body id="dataJoin">
+    <div id="dgDataJoin"></div>
+    <div id="dgDataJoin_H" style="visibility:hidden">
+        <!--資料連結，下方註解為寫入dgDataJoin的Templete，請勿刪除-->
+        <!--<table width="100%">
+            <tr>
+                <td>主來源</td>
+                <td id="djMainSourceCName"></td>
+                <td id="djMainSourceName" style="display:none;"></td>
+            </tr>
+            <tr>
+                <td>副來源</td>
+                <td id="djSecSourceCName"></td>
+                <td id="djSecSourceName" style="display:none;"></td>
+            </tr>
+            <tr>
+                <td colspan="3">輸出結果明細</td>
+            </tr>
+        </table>
+        <div style="max-height:260px;overflow-y: scroll;">
+            <table width="100%" id="tbDjOutputResult">
+                <thead>
+                    <tr>
+                        <th>來源</th>
+                        <th>欄位命名</th>
+                        <th>選</th>
+                        <th style="display:none;">資料表</th>
+                        <th style="display:none;">資料欄位</th>
+                        <th>資料表中文名稱</th>
+                        <th>資料欄位中文名稱</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <hr />
+        <table width="100%">
+            <tr>
+                <td>連結類型</td>
+                <td colspan="3">
+                    <input type="radio" name="rdDjJoinType" value="1" checked="checked" />完全符合
+                    <input type="radio" name="rdDjJoinType" value="2" />左外連結
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">新增資料連結</td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="ddlDjMainSource"></select>
+                </td>
+                <td>
+                    ＝
+                </td>
+                <td>
+                    <select id="ddlDjSecSource"></select>
+                </td>
+                <td>
+                    <button onclick="btnDjAddJoinCondition();">新增</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">連結條件</td>
+            </tr>
+        </table>
+        <div style="max-height:260px;overflow-y: scroll;">
+            <table width="100%" id="tbDjJoinResult">
+                <thead>
+                    <tr>
+                        <th>連結</th>
+                        <th>主來源欄位</th>
+                        <th></th>
+                        <th>副來源欄位</th>
+                        <th>刪</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>-->
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    var tbSeq;//紀錄連結條件流水號
+    var ShowColumnsCache = [];//暫存空間
+    var JoinTypeCache = null;//暫存空間
+    var JoinColumnsCache = [];//暫存空間
+
+    $(document).ready(function () {
+        //取得隱藏於dgDataJoin_H下的註解內容，並顯示至dgDataJoin
+        $("#dgDataJoin").append(getComment(document.getElementById("dgDataJoin_H"), 2));
+
+        //將JSON內的資訊寫回暫存空間
+        for (var ss = 0 ; ss < current.ShowColumns.length; ss++) {
+            ShowColumnsCache.push(current.ShowColumns[ss])
+        }
+
+        JoinTypeCache = current.JoinType;
+
+        for (var jj = 0 ; jj < current.JoinColumns.length; jj++) {
+            JoinColumnsCache.push(current.JoinColumns[jj])
+        }
+
+        var mainSource = dIGA.Step[dIGA.Step.length - 3];//主來源
+        var secSource = dIGA.Step[dIGA.Step.length - 2];//副來源
+
+        var mName = "";
+        if (mainSource.Name == "" || mainSource.Name == null) {
+            mName = mainSource.TableCName;
+        } else {
+            mName = mainSource.Name + '.' + mainSource.TableName;
+        }
+
+        $("#djMainSourceCName").html(mainSource.TableCName);
+        $("#djMainSourceName").html(mName);
+        $("#djSecSourceCName").html(secSource.TableCName);
+        $("#djSecSourceName").html(secSource.Name + '.' + secSource.TableName);
+
+        $("#tbDjOutputResult tbody tr").detach();//清空既有Table
+        $("#ddlDjMainSource option").detach();//清空selMainSource選單
+        $("#ddlDjSecSource option").detach();//清空selSecSource選單
+        appendToTable(mainSource, '主', "ddlDjMainSource");
+        appendToTable(secSource, '副', "ddlDjSecSource");
+
+        tbSeq = $("#tbDjJoinResult tbody").length;
+
+        //【連結條件】，若存在於JSON內，則顯示JSON已紀錄的資訊
+        if (JoinTypeCache != "" || JoinTypeCache != null) {
+            $("input[name='rdDjJoinType'][value=" + JoinTypeCache + "]").attr('checked', 'checked');
+        }
+
+        //【連結條件】
+        if (JoinColumnsCache.length > 0) {
+            for (var i = 0; i < JoinColumnsCache.length; i++) {
+                $("#tbDjJoinResult tbody").append('<tr><td>' + tbSeq + '</td><td column=\'' + JSON.stringify(JoinColumnsCache[i]["f1"]) + '\'>' + JoinColumnsCache[i]["f1"].CName + '</td><td>＝</td><td column=\'' + JSON.stringify(JoinColumnsCache[i]["f2"]) + '\'>' + JoinColumnsCache[i]["f2"].CName + '</td><td><button onclick="btnDjDel(this);">X</button></td></tr>');
+                tbSeq++;
+            }
+        }
+    });
+
+    //輸出結果明細
+    function appendToTable(source, srcName, selectID) {
+        for (var i = 0; i < source.Columns.length; i++) {
+            if (source.Columns[i].IsSelected == "Y") {
+                var tName = "";
+                var cName = source.Columns[i].CName;
+                var isChecked = "";
+                if (source.Name == "" || source.Name == null) {
+                    tName = source.TableCName;
+                } else {
+                    tName = source.Name + '.' + source.TableName;
+                }
+
+                //若存在於JSON內，則顯示JSON已紀錄的資訊
+                if (ShowColumnsCache.length > 0) {
+                    for (var k = 0; k < ShowColumnsCache.length; k++) {
+                        if ((ShowColumnsCache[k].SRCStep == source.Columns[i].CStep) && (ShowColumnsCache[k].ColumnSeq == source.Columns[i].ColumnSeq)) {
+                            isChecked = ShowColumnsCache[k].IsShow == "Y" ? "checked" : "";
+                        }
+                        if (isChecked == "checked") {
+                            cName = ShowColumnsCache[k].CName;
+                            break;
+                        }
+                    }
+                } else {
+                    isChecked = "checked";
+                }
+
+                $("#tbDjOutputResult tbody").append('<tr column=\'' + JSON.stringify(source.Columns[i]) + '\'><td>' + srcName + '</td><td><input type="text" name="txtDjColNameAs" value="' + cName + '"/></td><td><input type="checkbox" name="chkDjIsCheck" ' + isChecked + ' /></td><td style="display:none;">' + tName + '</td><td style="display:none;">' + source.Columns[i].Name + '</td><td>' + source.TableCName + '</td><td>' + source.Columns[i].CName + '</td></tr>');
+
+                //寫入新增資料連結下拉選單
+                var opt = '<option column=\'' + JSON.stringify(source.Columns[i]) + '\' value="' + source.Columns[i].Name + '">' + source.Columns[i].CName + '</option>';
+                $("#" + selectID).append(opt);
+            }
+        }
+    }
+
+    //資料連結-新增連結條件
+    function btnDjAddJoinCondition() {
+        var mainVal = $("#ddlDjMainSource :selected");
+        var secVal = $("#ddlDjSecSource :selected");
+
+        if (typeof (mainVal.val()) != "undefined" && typeof (secVal.val()) != "undefined") {
+            $("#tbDjJoinResult tbody").append('<tr><td>' + tbSeq + '</td><td column=\'' + $(mainVal).attr('column') + '\'>' + mainVal.html() + '</td><td>＝</td><td column=\'' + $(secVal).attr('column') + '\'>' + secVal.html() + '</td></td><td><button onclick="btnDjDel(this);">X</button></td></tr>');
+            tbSeq++;
+        } else {
+            alert("下拉選單查無資料");
+        }
+    }
+
+    //資料連結-刪除連結條件
+    function btnDjDel(e) {
+        if (confirm("確定刪除此連結條件?")) {
+            $(e).parent().parent().remove();
+        }
+    }
+</script>

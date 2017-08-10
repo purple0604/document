@@ -1,0 +1,227 @@
+<?xml version="1.0" standalone="yes"?>
+<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
+  <xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+    <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="SOURCE_TYPE">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="S_ID" type="xs:int" minOccurs="0" />
+                <xs:element name="NAME" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TABLE_DATA">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="T_NAME" type="xs:string" minOccurs="0" />
+                <xs:element name="S_ID" type="xs:int" minOccurs="0" />
+                <xs:element name="C_NAME" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="COLUMN_DATA">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="T_NAME" type="xs:string" minOccurs="0" />
+                <xs:element name="S_ID" type="xs:int" minOccurs="0" />
+                <xs:element name="NAME" type="xs:string" minOccurs="0" />
+                <xs:element name="C_NAME" type="xs:string" minOccurs="0" />
+                <xs:element name="C_TYPE" type="xs:string" minOccurs="0" />
+                <xs:element name="C_ORDER" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="SOURCE_TYPEKey1">
+        <xs:selector xpath=".//mstns:SOURCE_TYPE" />
+        <xs:field xpath="mstns:S_ID" />
+      </xs:unique>
+      <xs:unique name="TABLE_DATAKey1">
+        <xs:selector xpath=".//mstns:TABLE_DATA" />
+        <xs:field xpath="mstns:T_NAME" />
+        <xs:field xpath="mstns:S_ID" />
+      </xs:unique>
+      <xs:unique name="COLUMN_DATAKey1">
+        <xs:selector xpath=".//mstns:COLUMN_DATA" />
+        <xs:field xpath="mstns:T_NAME" />
+        <xs:field xpath="mstns:S_ID" />
+        <xs:field xpath="mstns:NAME" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <SOURCE_TYPE>
+    <S_ID>1</S_ID>
+    <NAME>PDATA</NAME>
+  </SOURCE_TYPE>
+  <SOURCE_TYPE>
+    <S_ID>2</S_ID>
+    <NAME>PMART</NAME>
+  </SOURCE_TYPE>
+  <TABLE_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <C_NAME>店舖交易基本資料</C_NAME>
+  </TABLE_DATA>
+  <TABLE_DATA>
+    <T_NAME>TRANS_PRODUCT</T_NAME>
+    <S_ID>1</S_ID>
+    <C_NAME>店舖交易商品明細</C_NAME>
+  </TABLE_DATA>
+  <TABLE_DATA>
+    <T_NAME>TRANS_CARD_PAY</T_NAME>
+    <S_ID>2</S_ID>
+    <C_NAME>卡類交易紀錄明細</C_NAME>
+  </TABLE_DATA>
+  <TABLE_DATA>
+    <T_NAME>PBMSTORE</T_NAME>
+    <S_ID>2</S_ID>
+    <C_NAME>店舖主檔</C_NAME>
+  </TABLE_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>TX_SEQ</NAME>
+    <C_NAME>交易序號</C_NAME>
+    <C_TYPE>數值</C_TYPE>
+    <C_ORDER>1</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>OSTORE_ID</NAME>
+    <C_NAME>原始店號</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>2</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>STORE_ID</NAME>
+    <C_NAME>既存店號</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>3</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>TM_NO</NAME>
+    <C_NAME>收銀機號</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>4</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>TX_DTTM</NAME>
+    <C_NAME>交易日期時間</C_NAME>
+    <C_TYPE>日期</C_TYPE>
+    <C_ORDER>5</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>Z_CNT</NAME>
+    <C_NAME>店鋪日結序號</C_NAME>
+    <C_TYPE>數值</C_TYPE>
+    <C_ORDER>6</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>NO_DEAL</NAME>
+    <C_NAME>店鋪交易序號</C_NAME>
+    <C_TYPE>數值</C_TYPE>
+    <C_ORDER>7</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>NO_KIND</NAME>
+    <C_NAME>客層代碼</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>8</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>SALE_TYPE</NAME>
+    <C_NAME>結帳型態</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>9</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS_PRODUCT</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>COL1</NAME>
+    <C_NAME>測試欄位1</C_NAME>
+    <C_TYPE>數值</C_TYPE>
+    <C_ORDER>1</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS_PRODUCT</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>COL2</NAME>
+    <C_NAME>測試欄位2</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>2</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS_PRODUCT</T_NAME>
+    <S_ID>1</S_ID>
+    <NAME>COL3</NAME>
+    <C_NAME>測試欄位3</C_NAME>
+    <C_TYPE>日期</C_TYPE>
+    <C_ORDER>3</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS_CARD_PAY</T_NAME>
+    <S_ID>2</S_ID>
+    <NAME>COL4</NAME>
+    <C_NAME>測試欄位4</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>1</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS_CARD_PAY</T_NAME>
+    <S_ID>2</S_ID>
+    <NAME>COL5</NAME>
+    <C_NAME>測試欄位5</C_NAME>
+    <C_TYPE>日期</C_TYPE>
+    <C_ORDER>2</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>TRANS_CARD_PAY</T_NAME>
+    <S_ID>2</S_ID>
+    <NAME>COL6</NAME>
+    <C_NAME>測試欄位6</C_NAME>
+    <C_TYPE>數值</C_TYPE>
+    <C_ORDER>3</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>PBMSTORE</T_NAME>
+    <S_ID>2</S_ID>
+    <NAME>COL7</NAME>
+    <C_NAME>測試欄位7</C_NAME>
+    <C_TYPE>數值</C_TYPE>
+    <C_ORDER>1</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>PBMSTORE</T_NAME>
+    <S_ID>2</S_ID>
+    <NAME>COL8</NAME>
+    <C_NAME>測試欄位8</C_NAME>
+    <C_TYPE>文字</C_TYPE>
+    <C_ORDER>2</C_ORDER>
+  </COLUMN_DATA>
+  <COLUMN_DATA>
+    <T_NAME>PBMSTORE</T_NAME>
+    <S_ID>2</S_ID>
+    <NAME>COL9</NAME>
+    <C_NAME>測試欄位9</C_NAME>
+    <C_TYPE>日期</C_TYPE>
+    <C_ORDER>3</C_ORDER>
+  </COLUMN_DATA>
+</DataSet1>

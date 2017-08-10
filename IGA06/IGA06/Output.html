@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>資料輸出</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="JS/publicJS.js"></script>
+</head>
+<body id="output">
+    <div id="dgDefineSRCName"></div>
+    <div id="dgDefineSRCName_H" style="visibility:hidden">
+        <!--自訂來源名稱，下方註解為寫入dgDefineSRCName的Templete，請勿刪除-->
+        <!--<table width="100%">
+            <tr>
+                <td>自訂來源名稱</td>
+                <td>
+                    <input type="text" id="defineSRCTableCName" />
+                </td>
+            </tr>
+        </table>-->
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //取得隱藏於dgCustAvg_H下的註解內容，並顯示至dgCustAvg
+        $("#dgDefineSRCName").append(getComment(document.getElementById("dgDefineSRCName_H"), 2));
+
+        $("#defineSRCTableCName").val(current.TableCName);
+    });
+</script>
