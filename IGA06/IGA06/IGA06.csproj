@@ -49,35 +49,35 @@
   <ItemGroup>
     <Reference Include="Accudata.Data.Agent, Version=2012.11.16.1, Culture=neutral, PublicKeyToken=78066ce22865c76e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Data.Agent.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Data.Agent.dll</HintPath>
     </Reference>
     <Reference Include="Accudata.Data.Agent.DataGateway, Version=2012.11.16.1, Culture=neutral, PublicKeyToken=f1efed485797e11b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Data.Agent.DataGateway.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Data.Agent.DataGateway.dll</HintPath>
     </Reference>
     <Reference Include="Accudata.Data.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a5c6ff4250985ddd">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Data.Common.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Data.Common.dll</HintPath>
     </Reference>
     <Reference Include="Accudata.Data.General, Version=2012.11.16.1, Culture=neutral, PublicKeyToken=dc9d24309ccd7d7f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Data.General.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Data.General.dll</HintPath>
     </Reference>
     <Reference Include="Accudata.Data.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=097ba5e31ae38c9c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Data.Model.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Data.Model.dll</HintPath>
     </Reference>
     <Reference Include="Accudata.Service.Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=55cffe647049b5bf, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Service.Model.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Service.Model.dll</HintPath>
     </Reference>
     <Reference Include="Accudata.Uda.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Uda.Client.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Uda.Client.dll</HintPath>
     </Reference>
     <Reference Include="Accudata.Uda.ServiceInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Accudata.Uda.ServiceInterface.dll</HintPath>
+      <HintPath>..\..\..\Projects\IGA06\IGA06\bin\Accudata.Uda.ServiceInterface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

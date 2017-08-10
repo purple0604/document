@@ -48,7 +48,7 @@
     <table width="100%">
         <tr>
             <td width="25%">
-                定義名稱：<input type="text" id="txtSearchName" style="width: 150px;" value="TEST_P" />
+                定義名稱：<input type="text" id="txtSearchName" style="width: 150px;" value="TEST_Purple" />
             </td>
             <td align="center">
                 <h2>自助式分析設計</h2>
