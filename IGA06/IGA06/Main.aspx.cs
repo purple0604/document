@@ -20,10 +20,14 @@ namespace IGA06
             {
                 SearchNo = "";
             }
+            this.UserId = Request.QueryString["User_Id"];
+            this.EmpNo = Request.QueryString["Emp_No"];
 
             DataBind();
         }
 
+        public string UserId { get; set; }
+        public string EmpNo { get; set; }
 
         public string SearchNo
         {

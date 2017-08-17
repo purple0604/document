@@ -37,6 +37,8 @@
     </style>
     <script type="text/javascript">
         var searchNo = '<%=SearchNo%>';
+        var userId = '<%=UserId%>';
+        var empNo = '<%=EmpNo%>';
         $(document).ready(function () {
             if (searchNo != '') {
                 dataRevert(searchNo);
@@ -48,7 +50,7 @@
     <table width="100%">
         <tr>
             <td width="25%">
-                定義名稱：<input type="text" id="txtSearchName" style="width: 150px;" value="TEST_Purple" />
+                定義名稱：<input type="text" id="txtSearchName" style="width: 150px;" value="" />
             </td>
             <td align="center">
                 <h2>自助式分析設計</h2>
@@ -112,3 +114,8 @@
     </table>
 </body>
 </html>
+<script type="text/javascript">
+    function btnIndex() {
+        window.location = 'Index.aspx?User_Id=' + userId + '&Emp_No=' + empNo;
+    }
+</script>

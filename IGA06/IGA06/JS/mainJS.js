@@ -199,7 +199,9 @@ function btnAddClick(btnId) {
 
     switch (btnId) {
         case "btnStart":
+            dIGA.EmpNo = empNo;//建立者員工編號
             dIGA.Status = 1;//狀態:1.編輯中
+            dIGA.UserId = userId;//異動人員
             drawTR(urlName, 1);//畫一筆TR
             break;
         case "btnDataSRC":
@@ -233,7 +235,12 @@ function btnAddClick(btnId) {
             openDialogFunc(urlHTML);
             break;
         case "btnSave":
-            dIGA.SearchName = $("#txtSearchName").val();//定義名稱
+            if ($("#txtSearchName").val() == "") {
+                alert("請輸入定義名稱");
+                return;
+            } else {
+                dIGA.SearchName = $("#txtSearchName").val();//定義名稱
+            }
             callAjax("SaveHandler.ashx", { Data: JSON.stringify(dIGA) }, "JSON", successSaveMsg, "POST");
             break;
         case "btnEnd":
@@ -260,7 +267,7 @@ function successFun(response) {
 //btnSave儲存後顯示訊息
 function successSaveMsg(response) {
     alert("儲存成功");
-    window.location = "Index.aspx";
+    window.location = 'Index.aspx?User_Id=' + userId + '&Emp_No=' + empNo;
 }
 
 //資料連結確認鈕(儲存)

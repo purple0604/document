@@ -15,6 +15,14 @@
     <script type="text/javascript" src="JS/publicJS.js"></script>
     <!--共用Function JS-->
     <script type="text/javascript" src="JS/mainJS.js"></script>
+        <style>
+        button {
+            font-size: medium;
+            /*width: 100px;*/
+            height: 30px;
+            background-color: #87CEFA;
+        }
+    </style>
     <script type="text/javascript">
         var userId = '<%=UserId%>';
         var empNo = '<%=EmpNo%>';
@@ -24,7 +32,10 @@
     <table id="tbIGAReslut">
         <thead>
             <tr>
-                <td><a href="Main.aspx">新增</a></td>
+                <td>
+                    <button onclick="btnRedirect(true);">新增</button>
+                </td>
+                <%--<td><a href="Main.aspx">新增</a></td>--%>
             </tr>
             <tr>
                 <td>序</td>
@@ -65,9 +76,9 @@
 
             //寫入列表清單，當狀態=完成時顯示執行功能
             for (var i = 0; i < response.length; i++) {
-                var IsExe = response[i]["STATUS"] == "完成" ? '<td><a href="#" onclick="callEXE(\'' + response[i]["SEARCH_NO"] + '\');">執行</a></td>' : '';
+                var IsExe = response[i]["STATUS"] == "完成" ? '<td><button onclick="callEXE(\'' + response[i]["SEARCH_NO"] + '\');">執行</button></td>' : '';
 
-                $("#tbIGAReslut tbody").append('<tr><td>' + response[i]["ROWNUM"] + '</td><td>' + response[i]["SEARCH_NAME"] + '</td><td>' + response[i]["STATUS"] + '</td><td>' + response[i]["CREATE_TIME"] + '</td><td><a href="Main.aspx?SearchNo=' + response[i]["SEARCH_NO"] + '">編輯</a></td>' + IsExe + '</tr>');
+                $("#tbIGAReslut tbody").append('<tr><td>' + response[i]["ROWNUM"] + '</td><td>' + response[i]["SEARCH_NAME"] + '</td><td>' + response[i]["STATUS"] + '</td><td>' + response[i]["CREATE_TIME"] + '</td><td><button onclick="btnRedirect(false, ' + response[i]["SEARCH_NO"] + ');">編輯</button></td>' + IsExe + '</tr>');
             }
         }
         callAjax("GetDataHandler.ashx", sData, "JSON", successFun);
@@ -136,6 +147,14 @@
             }
         }
     });
+
+    function btnRedirect(isAdd, searchNo) {
+        var url = 'Main.aspx?User_Id=' + userId + '&Emp_No=' + empNo;
+        if (!isAdd) {
+            url = url + '&SearchNo=' + searchNo;
+        }
+        window.location = url;
+    }
 
     //執行Function
     function callEXE(searchNo) {
