@@ -16,7 +16,7 @@
     <!--共用Function JS-->
     <script type="text/javascript" src="JS/mainJS.js"></script>
         <style>
-        button {
+        td button {
             font-size: medium;
             /*width: 100px;*/
             height: 30px;
@@ -35,7 +35,6 @@
                 <td>
                     <button onclick="btnRedirect(true);">新增</button>
                 </td>
-                <%--<td><a href="Main.aspx">新增</a></td>--%>
             </tr>
             <tr>
                 <td>序</td>

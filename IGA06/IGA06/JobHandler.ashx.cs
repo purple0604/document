@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Script.Serialization;
 
 namespace IGA06
@@ -104,7 +105,10 @@ namespace IGA06
 
                 m_da.Update(uCmd.ToArray(), m_connectionStringKey);
 
-                Agent ag = new Agent("172.16.5.89", 9980);
+                string agIP = WebConfigurationManager.AppSettings["agentIP"];
+                int agPort = int.Parse(WebConfigurationManager.AppSettings["agentPort"]);
+
+                Agent ag = new Agent(agIP, agPort);
                 ag.ExecuteJob(getData[0].ToString());
             }
             catch (Exception)
