@@ -56,7 +56,7 @@
                 <h2>自助式分析設計</h2>
             </td>
             <td width="25%" style="text-align:right;">
-                <button id="btnIndex" style="width: 120px;" onclick="window.location='Index.aspx'">
+                <button id="btnIndex" style="width: 120px;" onclick="btnIndex();">
                     回上一頁
                 </button>
             </td>
