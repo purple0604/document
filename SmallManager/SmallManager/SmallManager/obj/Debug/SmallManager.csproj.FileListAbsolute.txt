@@ -1,0 +1,6 @@
+D:\document\SmallManager\SmallManager\SmallManager\bin\SmallManager.dll.config
+D:\document\SmallManager\SmallManager\SmallManager\bin\SmallManager.dll
+D:\document\SmallManager\SmallManager\SmallManager\bin\SmallManager.pdb
+D:\document\SmallManager\SmallManager\SmallManager\obj\Debug\SmallManager.csprojResolveAssemblyReference.cache
+D:\document\SmallManager\SmallManager\SmallManager\obj\Debug\SmallManager.dll
+D:\document\SmallManager\SmallManager\SmallManager\obj\Debug\SmallManager.pdb
