@@ -157,6 +157,7 @@
     <Content Include="fonts\fontello\fontello.eot" />
     <Content Include="fonts\fontello\fontello.ttf" />
     <Content Include="fonts\fontello\fontello.woff" />
+    <None Include="Properties\PublishProfiles\SmallManager.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
