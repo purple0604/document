@@ -91,7 +91,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-
                         <div class="search-form wow pulse" data-wow-delay="0.8s">
                             <form action="" class=" form-inline">
                                 <div class="form-group">
@@ -152,322 +151,312 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active" id="job-seekers">
-                            <ul class="list-inline job-seeker">
-                                <div class="job-posts table-responsive">
-                                    <table class="table">
-                                        <tr class="odd wow fadeInUp info" data-wow-delay="0.7s">
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">日期</td>
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">星期</td>
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">開始時間</td>
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;"><i class="icon-location"></i><span style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">地址</span></td>
+                            <div class="job-posts table-responsive">
+                                <table class="table">
+                                    <tr class="odd wow fadeInUp info" data-wow-delay="0.7s">
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">日期</td>
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">星期</td>
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">開始時間</td>
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;"><i class="icon-location"></i><span style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">地址</span></td>
 
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">前往報名</td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/1</span></td>
-                                            <td><span>日</span></td>
-                                            <td><span>10:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <!--Refresh
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">前往報名</td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/1</span></td>
+                                        <td><span>日</span></td>
+                                        <td><span>10:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 屏東瑞光店] 屏東縣屏東市瑞光路二段８６號</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="Signup_In.aspx">點我報名</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!--Refresh
                                  <div class="more-jobs">
                                      <a href=""> <i class="fa fa-refresh"></i>View more jobs</a>
                                  </div>
                                  end-->
-                            </ul>
                         </div>
 
-
                         <div role="tabpanel" class="tab-pane fade" id="employeers">
-                            <ul class="list-inline">
-
-                                <div class="job-posts table-responsive">
-                                    <table class="table">
-                                        <tr class="odd wow fadeInUp info" data-wow-delay="0.7s">
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">日期</td>
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">星期</td>
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">開始時間</td>
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;"><i class="icon-location"></i><span style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">地址</span></td>
-
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">前往報名</td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.8s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                        <tr class="even wow fadeInUp" data-wow-delay="0.9s">
-                                            <td><span>10/3</span></td>
-                                            <td><span>二</span></td>
-                                            <td><span>14:00</span></td>
-                                            <td>
-                                                <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
-                                            </td>
-                                            <td class="tbl-apply"><a href="#">點我報名</a></td>
-                                        </tr>
-                                    </table>
-                                </div>
-
-                            </ul>
+                            <div class="job-posts table-responsive">
+                                <table class="table">
+                                    <tr class="odd wow fadeInUp info" data-wow-delay="0.7s">
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">日期</td>
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">星期</td>
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">開始時間</td>
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;"><i class="icon-location"></i><span style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">地址</span></td>
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: left;">前往報名</td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.8s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                    <tr class="even wow fadeInUp" data-wow-delay="0.9s">
+                                        <td><span>10/3</span></td>
+                                        <td><span>二</span></td>
+                                        <td><span>14:00</span></td>
+                                        <td>
+                                            <p><i class="icon-location"></i>[全家 - 基隆樂華店] 基隆市中山區西康里西定路４６７號１樓</p>
+                                        </td>
+                                        <td class="tbl-apply"><a href="#">點我報名</a></td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
 
                         <div role="tabpanel" class="tab-pane fade" id="search">
-                            <ul class="list-inline">
-                                <div class="job-posts table-responsive">
-                                    <table class="table">
-                                        <tr class="odd wow fadeInUp " data-wow-delay="0.6s">
-                                            <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: center;">
+                            <div class="job-posts table-responsive">
+                                <table class="table">
+                                    <tr class="odd wow fadeInUp " data-wow-delay="0.6s">
+                                        <td class="tbl-title" style="color: #2A639F; font-size: 13pt; font-weight: bold; text-align: center;">
 
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail2">Email</label>
-                                                        <input type="email" class="form-control" id="exampleInputName2" placeholder="xxxxx@example.com">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputTell">Tell</label>
-                                                        <input type="text" class="form-control" id="exampleInputTell" placeholder="0912345678">
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">查詢</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </ul>
+                                            <form class="form-inline">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail2">Email</label>
+                                                    <input type="email" class="form-control" id="exampleInputName2" placeholder="xxxxx@example.com">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputTell">Tell</label>
+                                                    <input type="text" class="form-control" id="exampleInputTell" placeholder="0912345678">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">查詢</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <!--tab end-->

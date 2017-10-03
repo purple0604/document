@@ -16,11 +16,7 @@
     <meta name="author" content="Ohidul">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/fontello.css">
@@ -40,7 +36,8 @@
         .map-container {
             position: relative;
             padding-bottom: 30%;
-            right: -20px padding-top: 30px;
+            /*right: -20px;*/
+            padding-top: 30px;
             height: 0;
             overflow: hidden;
         }
@@ -55,6 +52,18 @@
                 height: 100%;
                 text-align: center;
             }
+
+        @media screen and (max-width: 767px) {
+            .linefeed {
+                margin-top: 49px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .linefeed {
+                margin-top: 0px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -78,7 +87,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-md-2   col-sm-6 col-sm-offset-1  col-xs-3  col-xs-offset-1 col-lg-offset-5">
+                <div style="text-align: right;">
                     <div class="header-half header-social">
                         <ul class="list-inline">
                             <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -109,22 +118,25 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="button navbar-right">
-
                     <form class="form-inline" data-wow-delay="0.8s">
-
                         <div class="form-group ">
                             <label for="inputPassword2" class="sr-only">search</label>
                             <input type="search" class="form-control col-xs-2" id="inputsearch" placeholder="查詢_輸入mail或Tell">
                         </div>
                         <button type="submit" class="btn btn-info">報名查詢</button>
                     </form>
-
                 </div>
-                <ul class="main-nav nav navbar-nav navbar-right">
+                <%--<ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0s"><a class="active" href="Index.aspx">活動首頁</a></li>
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a href="Index.aspx#import">報名須知</a></li>
                     <li class="wow fadeInDown" data-wow-delay="0.2s"><a href="Index.aspx#activity_sh">活動場次</a></li>
                     <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#">聯絡我們</a></li>
+                </ul>--%>
+                <ul class="main-nav nav navbar-nav navbar-right">
+                    <li class="wow" data-wow-delay="0s"><a class="active" href="Index.aspx">活動首頁</a></li>
+                    <li class="wow" data-wow-delay="0.1s"><a href="Index.aspx#import">報名須知</a></li>
+                    <li class="wow" data-wow-delay="0.2s"><a href="Index.aspx#activity_sh">活動場次</a></li>
+                    <li class="wow" data-wow-delay="0.3s"><a href="#">聯絡我們</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -169,10 +181,8 @@
                                 <h4 style="font-weight: bold; color: #6A6A6A;">My Account</h4>
                             </div>
                             <ul class="list-unstyled">
-
                                 <li style="color: #808080;"><span class="glyphicon glyphicon-link"></span><a href="#">網站導覽</a></li>
                                 <li style="color: #808080;"><span class="glyphicon glyphicon-link"></span><a href="#">資安聲明</a></li>
-
                             </ul>
                         </div>
                         <div class="col-md-3 col-footer footer-4">
@@ -182,12 +192,10 @@
                             <ul class="list-unstyled">
                                 <li style="color: #808080;"><span class="glyphicon glyphicon-home"></span><a href="www.familynet.com.tw" target="new">www.familynet.com.tw</a></li>
                                 <li style="color: #808080;"><span class="glyphicon glyphicon-earphone"></span>02-6618-2822</li>
-
                                 <li style="color: #808080;"><span class="glyphicon glyphicon-envelope"></span>fami080@familynet.com.tw</li>
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -199,7 +207,6 @@
                 <div class="col-md-12" style="padding: 0 0 10px 0;">
                     <span style="color: #6A6A6A;">© 2015 Familynet All Rights Reserved.</span>
                 </div>
-
             </div>
         </div>
     </div>
