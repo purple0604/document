@@ -40,11 +40,12 @@ namespace IGA06
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 var data = serializer.DeserializeObject(context.Request.Form[0]);
                 Dictionary<string, object> dictData = (Dictionary<string, object>)data;
-                object[] objData = dictData.Values.ToArray()[3] as object[];
+                object[] objData = dictData.Values.ToArray()[4] as object[];
 
                 var searchNo = dictData.Values.ToArray()[0].ToString();
-                var userId = dictData.Values.ToArray()[1].ToString();
-                var empNo = dictData.Values.ToArray()[2].ToString();
+                var note = dictData.Values.ToArray()[1].ToString();
+                var userId = dictData.Values.ToArray()[2].ToString();
+                var empNo = dictData.Values.ToArray()[3].ToString();
 
                 List<UDA_D_JOBCONDITION> udjcList = new List<UDA_D_JOBCONDITION>();
                 List<UDA_D_JOB_OUTCONDITION> udjocList = new List<UDA_D_JOB_OUTCONDITION>();
@@ -91,7 +92,8 @@ namespace IGA06
                 ups[0] = new UpdateParameter("i_SEARCH_NO", "OleDbType.Integer", 10, searchNo, "ParameterDirection.Input");
                 ups[1] = new UpdateParameter("i_EMP_NO", "OleDbType.VarChar", 30, empNo, "ParameterDirection.Input");
                 ups[2] = new UpdateParameter("i_USER_ID", "OleDbType.VarChar", 30, userId, "ParameterDirection.Input");
-                ups[3] = new UpdateParameter("o_JOB_NO", "OleDbType.Integer", 24, "", "ParameterDirection.Output");
+                ups[3] = new UpdateParameter("i_NOTE", "OleDbType.VarChar", 100, note, "ParameterDirection.Input");
+                ups[4] = new UpdateParameter("o_JOB_NO", "OleDbType.Integer", 24, "", "ParameterDirection.Output");
 
                 //呼叫SP
                 string[] getData = m_da.Update("sp_create_new_job", ups, m_connectionStringKey);

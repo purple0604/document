@@ -60,10 +60,10 @@
             <table width="100%" id="tbDataTable">
                 <thead>
                     <tr>
-                        <td width="10%">選</td>
-                        <td style="display:none;">資料庫資料表</td>
-                        <td>資料表中文名稱</td>
-                        <td style="display:none;">版本號</td>
+                        <th width="10%">選</th>
+                        <th style="display:none;">資料庫資料表</th>
+                        <th>資料表中文名稱</th>
+                        <th style="display:none;">版本號</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -111,12 +111,12 @@
             <table width="100%" id="tbDataColumns">
                 <thead>
                     <tr>
-                        <td style="display:none;">資料庫欄位</td>
-                        <td>欄位中文名稱</td>
-                        <td>欄位型態</td>
-                        <td>列篩選</td>
-                        <td>選擇</td>
-                        <td style="display:none;">欄位序號</td>
+                        <th style="display:none;">資料庫欄位</th>
+                        <th>欄位中文名稱</th>
+                        <th>欄位型態</th>
+                        <th>列篩選</th>
+                        <th><input type="checkbox" checked="checked" id="ckAllColumns_S" onclick="ckBoxControl('ckAllColumns_S', 'chkColIsSelected');" />全選/選擇</th>
+                        <th style="display:none;">欄位序號</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -208,12 +208,12 @@
             <table width="100%" id="tbFilterCondition">
                 <thead>
                     <tr>
-                        <td style="display:none;">資料庫欄位</td>
-                        <td>欄位中文名稱</td>
-                        <td>欄位型態</td>
-                        <td>列篩選</td>
-                        <td>條件定義</td>
-                        <td>條件值</td>
+                        <th style="display:none;">資料庫欄位</th>
+                        <th>欄位中文名稱</th>
+                        <th>欄位型態</th>
+                        <th>列篩選</th>
+                        <th>條件定義</th>
+                        <th>條件值</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -520,11 +520,17 @@
                 m++;
             }
 
+            ckBoxControl('ckAllColumns_S', 'chkColIsSelected');
+
             //若存在於JSON內，則顯示JSON已紀錄的資訊
             var dColumCnt = current.Columns;
             for (var i = 0; i < dColumCnt.length; i++) {
                 var dCol = dColumCnt[i];
                 $("input[name='chkColIsSelected'][value='" + dCol.Name + "']").attr('checked', dCol.IsSelected == "Y" ? true : false);
+
+                if (dCol.IsSelected != "Y") {
+                    $("#ckAllColumns_S").removeAttr("checked");
+                }
             }
         }
         callAjax("GetDataHandler.ashx", sData, "JSON", successFun);

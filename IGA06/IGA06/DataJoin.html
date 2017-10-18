@@ -31,7 +31,7 @@
                     <tr>
                         <th>來源</th>
                         <th>欄位命名</th>
-                        <th>選</th>
+                        <th><input type="checkbox" checked="checked" id="ckAllColumns_J" onclick="ckBoxControl('ckAllColumns_J', 'chkDjIsCheck');" />全選/選擇</th>
                         <th style="display:none;">資料表</th>
                         <th style="display:none;">資料欄位</th>
                         <th>資料表中文名稱</th>
@@ -174,13 +174,18 @@
                     isChecked = "checked";
                 }
 
-                $("#tbDjOutputResult tbody").append('<tr column=\'' + JSON.stringify(source.Columns[i]) + '\'><td>' + srcName + '</td><td><input type="text" name="txtDjColNameAs" value="' + cName + '"/></td><td><input type="checkbox" name="chkDjIsCheck" ' + isChecked + ' /></td><td style="display:none;">' + tName + '</td><td style="display:none;">' + source.Columns[i].Name + '</td><td>' + source.TableCName + '</td><td>' + source.Columns[i].CName + '</td></tr>');
+                $("#tbDjOutputResult tbody").append('<tr column=\'' + JSON.stringify(source.Columns[i]) + '\'><td>' + srcName + '</td><td><input type="text" name="txtDjColNameAs" value="' + cName + '"/></td><td align="center"><input type="checkbox" name="chkDjIsCheck" ' + isChecked + ' /></td><td style="display:none;">' + tName + '</td><td style="display:none;">' + source.Columns[i].Name + '</td><td>' + source.TableCName + '</td><td>' + source.Columns[i].CName + '</td></tr>');
 
                 //寫入新增資料連結下拉選單
                 var opt = '<option column=\'' + JSON.stringify(source.Columns[i]) + '\' value="' + source.Columns[i].Name + '">' + source.Columns[i].CName + '</option>';
                 $("#" + selectID).append(opt);
+
+                if (isChecked == "") {
+                    $("#ckAllColumns_J").removeAttr("checked");
+                }
             }
         }
+        ckBoxControl('ckAllColumns_J', 'chkDjIsCheck');
     }
 
     //資料連結-新增連結條件

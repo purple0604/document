@@ -22,6 +22,10 @@
             height: 30px;
             background-color: #87CEFA;
         }
+
+        .ui-dialog .ui-dialog-titlebar-close {
+            display: none;
+        }
     </style>
     <script type="text/javascript">
         var userId = '<%=UserId%>';
@@ -50,7 +54,10 @@
     <div id="dgFloatColumns"></div>
     <div id="dgFloatColumns_H" style="visibility: hidden">
         <!--浮動欄位，下方註解為寫入dgFloatColumns_H的Templete，請勿刪除-->
-        <!--<table width="100%" id="tbFloatColumns">
+        <!--執行備註：<br />
+            <textarea rows="3" style="width:100%;" id="txtNote" maxlength="100"></textarea>
+            <hr />
+            <table width="100%" id="tbFloatColumns">
             <thead>
                 <tr>
                     <td>欄位中文名稱</td>
@@ -88,9 +95,10 @@
             autoOpen: false,
             resizable: false,
             draggable: false,
+            closeOnEscape: false,
+            modal: true,
             height: 450,
             width: 700,
-            modal: true,
             buttons: {
                 "確認": sFloatColumnsOK,
                 "關閉": function () {
@@ -101,6 +109,7 @@
 
         function sFloatColumnsOK() {
             var IsErr = false;
+            dFloat.Note = $("#txtNote").val();
             dFloat.UserId = userId;
             dFloat.EmpNo = empNo;
             dFloat.FloatColumns = [];//清空已存入項目

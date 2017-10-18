@@ -462,6 +462,19 @@ function removeLastData() {
     $(arrArea[arrArea.length - 1]).remove();//取得最後一個箭頭
 }
 
+//全選、反全選控制
+function ckBoxControl(ckParents, ckChild) {
+    $("#" + ckParents).change(function () {
+        $("input[name='" + ckChild + "']").prop("checked", this.checked);
+    });
+
+    $("input[name='" + ckChild + "']").change(function () {
+        if (!$(this).prop("checked")) {
+            $("#" + ckParents).removeAttr("checked");
+        }
+    });
+}
+
 //*************寫入JSON格式*************//
 function DataIGA() {
     this.SearchNo = "";//定義編號
@@ -588,6 +601,7 @@ function CustColumn() {
 //*************執行：寫入JSON格式*************//
 function DataFloat() {
     this.SearchNo = "";//定義編號
+    this.Note = "";//備註
     this.UserId = "";
     this.EmpNo = "";
     this.FloatColumns = new Array();//浮動變數設定
