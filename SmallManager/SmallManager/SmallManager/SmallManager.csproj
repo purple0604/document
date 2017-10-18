@@ -68,6 +68,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fontello\fontello.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="img\banner_1.jpg" />
     <Content Include="img\clothes_size.png" />
     <Content Include="img\fami_logo.png" />
