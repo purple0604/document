@@ -41,11 +41,11 @@
                 </td>
             </tr>
             <tr>
-                <td>序</td>
-                <td>定義名稱</td>
-                <td>狀態</td>
-                <td>建立時間</td>
-                <td></td>
+                <th>序</th>
+                <th>定義名稱</th>
+                <th>狀態</th>
+                <th>建立時間</th>
+                <th></th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -60,10 +60,10 @@
             <table width="100%" id="tbFloatColumns">
             <thead>
                 <tr>
-                    <td>欄位中文名稱</td>
-                    <td>欄位型態</td>
-                    <td>條件定義</td>
-                    <td>條件值</td>
+                    <th>欄位中文名稱</th>
+                    <th>欄位型態</th>
+                    <th>條件定義</th>
+                    <th>條件值</th>
                 </tr>
             </thead>
             <tbody></tbody>
