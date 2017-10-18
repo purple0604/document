@@ -88,7 +88,7 @@ namespace IGA06
                     }
                 }
                 
-                UpdateParameter[] ups = new UpdateParameter[4];
+                UpdateParameter[] ups = new UpdateParameter[5];
                 ups[0] = new UpdateParameter("i_SEARCH_NO", "OleDbType.Integer", 10, searchNo, "ParameterDirection.Input");
                 ups[1] = new UpdateParameter("i_EMP_NO", "OleDbType.VarChar", 30, empNo, "ParameterDirection.Input");
                 ups[2] = new UpdateParameter("i_USER_ID", "OleDbType.VarChar", 30, userId, "ParameterDirection.Input");
